@@ -1,0 +1,82 @@
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]'))
+DROP TABLE [dbo].[WC_DAY_D_SK]
+GO 
+
+
+CREATE TABLE [dbo].[WC_DAY_D_SK](
+	[ROW_WID] [numeric](10, 0) NULL,
+	[CALENDAR_DATE] [datetime] NULL,
+	[CAL_HALF] [numeric](2, 0) NULL,
+	[CAL_MONTH] [numeric](2, 0) NULL,
+	[CAL_TRIMESTER] [numeric](10, 0) NULL,
+	[CAL_WEEK] [numeric](2, 0) NULL,
+	[CAL_YEAR] [numeric](4, 0) NULL,
+	[DAY_DT] [datetime] NULL,
+	[DAY_OF_MONTH] [numeric](2, 0) NULL,
+	[DAY_OF_WEEK] [numeric](1, 0) NULL,
+	[DAY_OF_YEAR] [numeric](3, 0) NULL,
+	[JULIAN_MONTH_NUM] [numeric](10, 0) NULL,
+	[MONTH_AGO_WID] [numeric](10, 0) NULL,
+	[PERIOD_KEY] [numeric](10, 0) NULL,
+	[QUARTER_AGO_WID] [numeric](10, 0) NULL,
+	[WEEK_AGO_WID] [numeric](10, 0) NULL,
+	[YEAR_AGO_WID] [numeric](10, 0) NULL,
+	[DAY_NAME] [nvarchar](30) NULL,
+	[MONTH_NAME] [nvarchar](30) NULL,
+	[PER_NAME_FSCL_MNTH] [nvarchar](50) NULL,
+	[PER_NAME_FSCL_QTR] [nvarchar](50) NULL,
+	[PER_NAME_FSCL_WEEK] [nvarchar](50) NULL,
+	[PER_NAME_FSCL_YEAR] [nvarchar](50) NULL,
+	[PER_NAME_HALF] [nvarchar](50) NULL,
+	[PER_NAME_MONTH] [nvarchar](50) NULL,
+	[PER_NAME_QTR] [nvarchar](50) NULL,
+	[PER_NAME_TER] [nvarchar](50) NULL,
+	[PER_NAME_WEEK] [nvarchar](50) NULL,
+	[CAL_DAY_OF_WEEK] [numeric](1, 0) NULL,
+	[RECAL_WEEK] [numeric](2, 0) NULL,
+	[CAL_PER_NAME_WEEK] [nvarchar](50) NULL,
+	[RECAL_WEEK_YEAR] [nvarchar](50) NULL,
+	[ISO_WEEK_DATE] [nvarchar](50) NULL,
+	[FIRST_DAY_YR_WID] [numeric](10, 0) NULL,
+	[FIRST_DAY_YAGO_WID] [numeric](10, 0) NULL,
+	[FIRST_DAY_MTH_WID] [numeric](10, 0) NULL,
+	[FIRST_DAY_MTH_YAGO_WID] [numeric](10, 0) NULL,
+	[FIRST_DAY_WEEK_WID] [numeric](10, 0) NULL,
+	[LAST_DAY_WEEK_FLG] [nvarchar](1) NULL,
+	[LAST_DAY_MTH_FLG] [nvarchar](1) NULL,
+	[FST_WEEKDAY_YAGO_WID] [numeric](10, 0) NULL,
+	[WEEKDAY_YAGO_WID] [numeric](10, 0) NULL,
+	[BI_MONTH] [nvarchar](2) NULL,
+	[BI_MONTH_YR] [nvarchar](7) NULL,
+	[DSD_WEEK] [nvarchar](30) NULL,
+	[DAY_WEIGHT] [numeric](22, 7) NULL,
+	[DAY_WEIGHT_YAGO] [numeric](22, 7) NULL,
+	[CUSTOM_CYCLE_1] [nvarchar](30) NULL,
+	[CUSTOM_CYCLE_2] [nvarchar](30) NULL,
+	[CUSTOM_CYCLE_3] [nvarchar](30) NULL,
+	[CUSTOM_CYCLE_4] [nvarchar](30) NULL,
+	[CUSTOM_CYCLE_5] [nvarchar](30) NULL,
+	[BU_ID] [nvarchar](15) NULL,
+	[COUNTRY_CODE] [nvarchar](2) NULL,
+	[FIRST_DAY_MTH_FLG] [nvarchar](1) NULL,
+	[FIRST_DAY_WEEK_FLG] [nvarchar](1) NULL,
+	[TOTAL_MONTH_SELL_DAYS] [numeric](10, 0) NULL,
+	[TOTAL_MONTH_SELL_DAYS_YAGO] [numeric](22, 10) NULL,
+	[MONTH_WEIGHT] [numeric](22, 7) NULL,
+	[MONTH_WEIGHT_YAGO] [numeric](22, 7) NULL,
+	[MONTH_SELL_DAYS] [numeric](22, 10) NULL,
+	[MONTH_SELL_DAYS_YAGO] [numeric](22, 10) NULL,
+	[DAY_NAME_LOCALIZED] [nvarchar](30) NULL,
+	[MONTH_NAME_LOCALIZED] [nvarchar](30) NULL,
+	[TOTAL_MONTH_SELL_DAYS_MAGO] [numeric](10, 0) NULL,
+	[MONTH_SELL_DAYS_MAGO] [numeric](10, 0) NULL,
+	[MONTH_WEIGHT_MAGO] [numeric](10, 0) NULL,
+	[DTW_CALENDAR_DATE]  AS (CONVERT([date],[CALENDAR_DATE])) PERSISTED
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+

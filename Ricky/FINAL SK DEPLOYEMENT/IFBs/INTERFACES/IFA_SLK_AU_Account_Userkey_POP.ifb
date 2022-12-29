@@ -1,0 +1,74 @@
+; .ifb file according to TME Phase 2 - HLFD Interface Accounts User key update v0.1 
+; [30.06.2011:JL]INC0345838 - set IF_ROW_BATCH_NUM for the denormalized column to 100000+country batch 
+
+[Siebel Interface Manager]
+	LOG TRANSACTIONS = TRUE
+	SET BASED LOGGING = TRUE
+	LOG TRANSACTIONS TO FILE = TRUE 
+        PROCESS = IMPORT ALL
+
+[IMPORT ALL]
+	 TYPE = SHELL
+	 INCLUDE = "UPDATE PARTY_UID"
+	 INCLUDE = "Import EIM_ORG_EXT_UK"
+	 INCLUDE = "GENERATE ROW FOR S_ACCNT_POSTN DENORM"
+	 INCLUDE = "GENERATE ROW FOR S_ORG_BU DENORM"
+
+
+;-----------------------------------------------------------------------------------------------------
+;Update the PARTY_UID of EIM_ORG_EXT_UK 
+
+[UPDATE PARTY_UID]
+	SESSION SQL = "UPDATE EIM_ORG_EXT_UK SET PARTY_UID = ISNULL( (SELECT P.PARTY_UID FROM S_PARTY P INNER JOIN S_ORG_EXT O ON (O.PAR_ROW_ID = P.ROW_ID) INNER JOIN S_BU BU ON (O.BU_ID = BU.ROW_ID) WHERE O.NAME = EIM_ORG_EXT_UK.INTEGRATION_ID AND BU.NAME = EIM_ORG_EXT_UK.ORG_BU), 'NO PARTY FOR '+EIM_ORG_EXT_UK.INTEGRATION_ID) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999 AND IF_ROW_STAT = 'FOR_IMPORT'"
+
+	TYPE = IMPORT
+	BATCH NUMBER = 12345678;dummy
+	TABLE = EIM_ORG_EXT_UK; ROLLBACK ON ERROR = TRUE
+
+;--------------------------------------------------------------------------------------------------------
+
+[IMPORT EIM_ORG_EXT_UK]
+ 
+ 	TYPE = IMPORT
+;<REQUEST Import EIM_ORG_EXT_UK>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_ORG_EXT_UK (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import EIM_ORG_EXT_UK>
+       BATCH = 34000-34999
+;</BATCH>
+
+        
+        ;*** Specify source table ***
+        TABLE = EIM_ORG_EXT_UK
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_ORG_EXT,S_PARTY
+    	INSERT ROWS = S_PARTY, FALSE
+    	UPDATE ROWS = S_PARTY, TRUE
+    	INSERT ROWS = S_ORG_EXT, FALSE
+    	UPDATE ROWS = S_ORG_EXT, TRUE
+			    
+	FIXED COLUMN = PARTY_TYPE_CD, "Organization"
+
+;----------------------------------------------------------------------------------------------------------
+;Inserting Denormalised value 
+;-----------------------------------------------------------------------------------------------------------
+
+;Account Name column is being denormalised into S_ACCNT_POSTN table, in order to replicate the Account Name update there also, a new batch should be gererated for the update
+
+[GENERATE ROW FOR S_ACCNT_POSTN DENORM]
+	SESSION SQL = "INSERT INTO EIM_ORG_EXT_UK (ROW_ID, IF_ROW_BATCH_NUM, IF_ROW_STAT, PARTY_UID, PARTY_TYPE_CD, INTEGRATION_ID, ORG_NAME, POSTN_NAME, POSTN_DIVN, POSTN_DIVN_LOC, POSTN_DIVN_BU) SELECT C.ROW_ID, G.IF_ROW_BATCH_NUM+100000, 'FOR_IMPORT', A.PARTY_UID, A.PARTY_TYPE_CD, B.INTEGRATION_ID, B.NAME, D.NAME, E.NAME, E.LOC, F.NAME FROM S_PARTY A, S_ORG_EXT B, S_ACCNT_POSTN C, S_POSTN D, S_ORG_EXT E, S_BU F, EIM_ORG_EXT_UK G WHERE A.ROW_ID = B.PAR_ROW_ID AND B.ROW_ID = C.OU_EXT_ID AND C.POSITION_ID = D.ROW_ID AND D.OU_ID = E.ROW_ID AND E.BU_ID = F.ROW_ID AND G.T_PARTY__RID = A.ROW_ID AND G.IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999"
+
+	TYPE = IMPORT
+	BATCH NUMBER = 12345678;dummy
+	TABLE = EIM_ORG_EXT_UK; ROLLBACK ON ERROR = TRUE
+
+
+;BU Name column is being denormalised into S_ORG_BU table, in order to replicate the BU Name update there also, a new batch should be gererated for the update
+
+[GENERATE ROW FOR S_ORG_BU DENORM]
+	SESSION SQL = "INSERT INTO EIM_ORG_EXT_UK (ROW_ID, IF_ROW_BATCH_NUM, IF_ROW_STAT, PARTY_UID, PARTY_TYPE_CD, INTEGRATION_ID, ORG_NAME, VIS_BU) SELECT C.ROW_ID, E.IF_ROW_BATCH_NUM+100000, 'FOR_IMPORT', A.PARTY_UID, A.PARTY_TYPE_CD, B.INTEGRATION_ID, B.NAME, D.NAME FROM S_PARTY A, S_ORG_EXT B, S_ORG_BU C, S_BU D, EIM_ORG_EXT_UK E WHERE A.ROW_ID = B.PAR_ROW_ID AND B.ROW_ID = C.ORG_ID AND C.BU_ID = D.ROW_ID AND E.T_PARTY__RID = A.ROW_ID AND E.IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999"
+
+	TYPE = IMPORT
+	BATCH NUMBER = 12345678;dummy
+	TABLE = EIM_ORG_EXT_UK; ROLLBACK ON ERROR = TRUE
+
+;------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,26 @@
+; .ifb file according to TMEI-DVT-HDL Input File Definitions Zipcodes (ZC).doc V 0.3
+
+[Siebel Interface Manager]
+       	LOG TRANSACTIONS = TRUE
+	SET BASED LOGGING = TRUE
+	LOG TRANSACTIONS TO FILE = TRUE
+        PROCESS = IMPORT ALL
+
+[IMPORT ALL]
+	 TYPE = SHELL
+	 INCLUDE = "Import EIM_ZIPCODE"
+
+
+[Import EIM_ZIPCODE]
+ 
+ 	TYPE = IMPORT
+	;<REQUEST Import EIM_ZIPCODE>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_ZIPCODE (NOLOCK) 		WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+	;<BATCH Import EIM_ZIPCODE>
+		BATCH = 34000-34999
+	;</BATCH>
+        
+        ;*** Specify source table ***
+        TABLE = EIM_ZIPCODE
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_ZIPCODE

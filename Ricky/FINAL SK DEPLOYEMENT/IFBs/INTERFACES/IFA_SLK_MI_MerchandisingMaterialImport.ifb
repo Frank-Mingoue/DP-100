@@ -1,0 +1,69 @@
+; .ifb file according to TMEI-DVT-HDL Input File Definitions Merchandising Material (MI).doc V 0.3
+
+[Siebel Interface Manager]
+       
+       	LOG TRANSACTIONS = TRUE
+	SET BASED LOGGING = TRUE
+	LOG TRANSACTIONS TO FILE = TRUE
+        PROCESS =Import ALL
+
+   
+[Import ALL]
+
+     TYPE = SHELL
+
+     INCLUDE = "UPDATE MERCHANDISING MATERIAL"
+     INCLUDE = "UPDATE PROMOTION"
+
+[UPDATE MERCHANDISING MATERIAL]
+
+      TYPE  = IMPORT
+      ;<REQUEST UPDATE MERCHANDISING MATERIAL>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_SRC (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+      ;<BATCH UPDATE MERCHANDISING MATERIAL>
+              BATCH = 34000-34999
+      ;</BATCH>
+
+      ;*** Specify source table ***
+      TABLE = EIM_SRC
+
+      ;*** Specify destination tables ***
+      ONLY BASE TABLES = S_SRC
+
+      
+      INSERT ROWS = S_SRC, FALSE
+      UPDATE ROWS = S_SRC, TRUE
+
+      ONLY BASE COLUMNS = S_SRC.SRC_NUM,\
+			  S_SRC.SUB_TYPE,\
+			  S_SRC.BU_ID,\
+			  S_SRC.X_COMPLIANCY_QTY_NUM,\
+			  S_SRC.X_NUM_OF_MAT_PLACED_NUM,\
+			  S_SRC.X_NON_COMPLIANCE_REASON_CD,\
+			  S_SRC.X_NOT_APPLICATBLE_FLG,\
+			  S_SRC.COMMENTS,\
+			  S_SRC.X_OUTLET_QUANTITY_NUM,\
+			  S_SRC.X_MAT_FOUND_NUM
+
+[UPDATE PROMOTION]
+
+      TYPE  = IMPORT
+      ;<REQUEST UPDATE PROMOTION>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_SRC (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+      ;<BATCH UPDATE PROMOTION>
+              BATCH = 34000-34999
+      ;</BATCH>
+
+      ;*** Specify source table ***
+      TABLE = EIM_SRC
+
+      ;*** Specify destination tables ***
+      ONLY BASE TABLES = S_SRC
+
+      
+      INSERT ROWS = S_SRC, FALSE
+      UPDATE ROWS = S_SRC, TRUE
+
+      ONLY BASE COLUMNS = S_SRC.SRC_NUM,\
+			  S_SRC.SUB_TYPE,\
+			  S_SRC.BU_ID,\
+			  S_SRC.X_STATUS_CD,\
+			  ;S_SRC.PR_ACCNT_ID ; To remain commented

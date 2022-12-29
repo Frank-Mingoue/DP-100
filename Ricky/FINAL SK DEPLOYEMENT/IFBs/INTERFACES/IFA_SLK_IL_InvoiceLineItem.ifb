@@ -1,0 +1,48 @@
+; .ifb file according to TME Phase 2 - HLFD Interface Invoice Line Item - Import Version.doc
+;-----------------------------------------------------------------------------------------------------------------------------------------
+;Author: Robert Grenade
+;Date Created:08/07/2011
+;Date Modified:08/07/2011
+;Modified by:  Robert Grenade
+;-----------------------------------------------------------------------------------------------------------------------------------------
+
+[Siebel Interface Manager]
+    LOG TRANSACTIONS = TRUE
+	SET BASED LOGGING = TRUE
+	LOG TRANSACTIONS TO FILE = TRUE
+    PROCESS = IMPORT ALL
+
+[IMPORT ALL]
+	 TYPE = SHELL
+	 INCLUDE = "Import INVOICE"
+	 INCLUDE = "Import INVOICE ITEM"
+
+;-------------------------------------------------------------------------------------------------------------------------------------------
+
+[Import INVOICE]
+ 
+ 	TYPE = IMPORT
+;<REQUEST Import INVOICE>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_INVOICE (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import INVOICE>
+	BATCH = 34000-34999
+;</BATCH>
+        
+        ;*** Specify source table ***
+        TABLE = EIM_INVOICE
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_INVOICE
+;----------------------------------------------------------------------------------------------------------------------------------------
+[Import INVOICE ITEM]
+ 
+ 	TYPE = IMPORT
+;<REQUEST Import INVOICE ITEM>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_INVC_ITEM(NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import INVOICE ITEM>
+	BATCH = 34000-34999
+;</BATCH>
+        
+        ;*** Specify source table ***
+        TABLE = EIM_INVC_ITEM
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_INVOICE_ITEM

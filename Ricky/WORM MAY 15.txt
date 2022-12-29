@@ -1,0 +1,7 @@
+IFA_CZ_CAP_STEP_7_LINK_NR_TO_VISITS 6464000o
+
+INC4157766 RUS TME OBIEE: Data update
+INC4047433 June'22: TM: TM Payment Error - User MONNOVAKJ
+INC4162292 Parameters missing for Slovakia in PARAM table for CEU UAT
+BUG 38388  Adapt the FTM to accommodate the migration to SSIS Toolkit 2019
+

@@ -1,0 +1,128 @@
+;[20150629:GU]AS per IP14 Siebel upgrade ,3 new required fields added.
+;.ifb file according to TME Phase 2 - HLFD Interface Template Assessments Version 2.0.doc
+;Version Number:2.0
+
+;Description of Changes: Include S_ASSESS_ATTRIB.X_ANSWER_TYPE_CD
+;Release Date: 13/04/2012
+;Process ID: CHG027749
+;Development Team: Data
+;Author: Jonathan L'etourdi
+
+;Description of Changes: Modify ifb to set X_ATTRIB_49
+;Release Date: 11/02/2011
+;Process ID: CHG0252829
+;Development Team: Data
+;Author: Jeremie Simonet
+
+;Description of Changes: Modify ifb to add new eim section on EIM_CX_ASSATTR
+;Release Date: 08/04/2014
+;Process ID:CHG051877
+;Development Team: Data
+;Author: Gulraaz Usmani
+
+;[20140725:NH]CHG061673 -Modify ifb to add new column X_SEQ_NUM
+
+;Description of Changes: Move the Template Assessment value to a new batch to avoid PARTIALLY IMPORTED
+;Release Date: July 18
+;Modified Date: 11/04/2018
+;Process ID: INC2360933
+;Author : Misa Cyprienna
+
+[Siebel Interface Manager]
+		LOG TRANSACTIONS = TRUE
+		SET BASED LOGGING = TRUE
+		LOG TRANSACTIONS TO FILE = TRUE
+		PROCESS = Import ALL
+   
+[Import ALL]
+		TYPE = SHELL
+
+		INCLUDE = "Import Template Assessment"
+		INCLUDE = "Import Template Assessment value"
+		INCLUDE = "Import Previous Question Answer"
+
+;------------------------------------------------------------------------
+
+[Import Template Assessment]
+		TYPE = IMPORT
+;<REQUEST Import Template Assessment>SELECT  ISNULL(MAX(IF_ROW_BATCH_NUM), 34000 )  FROM EIM_TMPL_PLNITM (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import Template Assessment>
+		BATCH =34000-34999
+;</BATCH> 
+     	TABLE = EIM_TMPL_PLNITM
+     	ONLY BASE TABLES= S_TMPL_PLANITEM,S_ASSESS_ATTRIB
+
+		INSERT ROWS= S_TMPL_PLANITEM, TRUE
+		INSERT ROWS= S_ASSESS_ATTRIB, TRUE
+		
+		UPDATE ROWS= S_TMPL_PLANITEM, TRUE
+		UPDATE ROWS= S_ASSESS_ATTRIB, TRUE
+
+        ONLY BASE COLUMNS = S_TMPL_PLANITEM.NAME,\
+							S_TMPL_PLANITEM.BU_ID,\
+							S_TMPL_PLANITEM.ACTIVE_FLG,\
+							S_TMPL_PLANITEM.TMPL_TYPE_CD,\
+							S_TMPL_PLANITEM.DESC_TEXT,\
+							S_TMPL_PLANITEM.X_STATUS_CD,\
+							S_TMPL_PLANITEM.X_CHANNEL_CD,\
+							S_TMPL_PLANITEM.X_SUPERVISOR_CD,\
+							S_TMPL_PLANITEM.X_PROMO_PRG_ID,\
+							S_TMPL_PLANITEM.TYPE_CD,\
+							S_ASSESS_ATTRIB.ASSESS_TMPL_ID,\
+							S_ASSESS_ATTRIB.X_REQ_FLG,\
+							S_ASSESS_ATTRIB.SEQUENCE_NUM,\
+							S_ASSESS_ATTRIB.NAME,\
+							S_ASSESS_ATTRIB.DESC_TEXT,\
+							S_ASSESS_ATTRIB.X_ACCNT_ATTRIB_FLG,\
+							S_ASSESS_ATTRIB.X_MAX_PRICE,\
+							S_ASSESS_ATTRIB.X_MIN_PRICE,\
+							S_ASSESS_ATTRIB.PRODUCT_ID,\
+							S_ASSESS_ATTRIB.X_ANSWER_IS_LOV_FLG,\
+							S_TMPL_PLANITEM.X_CONTACT_ASSESS_FLG,\
+							S_ASSESS_ATTRIB.X_ANSWER_TYPE_CD,\
+							S_TMPL_PLANITEM.X_CONDITION_ASSESS_FLG,\
+							S_ASSESS_ATTRIB.X_SEQ_NUM,\
+							S_TMPL_PLANITEM.END_OF_VISIT_FLG,\
+							S_TMPL_PLANITEM.PLANNEDFLG_VAL_FLG,\
+							S_TMPL_PLANITEM.SD_VERIFY_FLG
+				
+[Import Template Assessment value]
+		TYPE = IMPORT
+;<REQUEST Import Template Assessment value>SELECT ISNULL(MAX(IF_ROW_BATCH_NUM), 10034000 ) FROM EIM_TMPL_PLNITM (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 10034000 AND 10034999</REQUEST>
+;<BATCH Import Template Assessment value>
+		BATCH =10034000-10034999
+;</BATCH> 
+		TABLE = EIM_TMPL_PLNITM
+		ONLY BASE TABLES= S_TMPL_PLANITEM,S_ASSESS_ATTRIB,S_ASSESS_ATTVAL
+
+		INSERT ROWS= S_TMPL_PLANITEM, FALSE
+		INSERT ROWS= S_ASSESS_ATTRIB, FALSE
+		INSERT ROWS= S_ASSESS_ATTVAL, TRUE
+
+		UPDATE ROWS= S_TMPL_PLANITEM, FALSE
+		INSERT ROWS= S_ASSESS_ATTRIB, FALSE
+		UPDATE ROWS= S_ASSESS_ATTVAL, TRUE
+
+		ONLY BASE COLUMNS = S_TMPL_PLANITEM.NAME,\
+							S_TMPL_PLANITEM.TYPE_CD,\
+							S_TMPL_PLANITEM.PAR_TMPL_ID,\
+							S_TMPL_PLANITEM.BU_ID,\
+							S_ASSESS_ATTVAL.ASSESS_ATTR_ID,\
+							S_ASSESS_ATTVAL.ATTRIB_VALUE,\
+							S_ASSESS_ATTVAL.SEQUENCE_NUM,\
+							S_ASSESS_ATTVAL.DESC_TEXT,\
+							S_ASSESS_ATTVAL.X_PRODUCT_ID
+	
+[Import Previous Question Answer]
+		TYPE = IMPORT
+;<REQUEST Import Previous Question Answer>SELECT ISNULL(MAX(IF_ROW_BATCH_NUM), 34000 ) FROM EIM_CX_ASSATTR(NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import Previous Question Answer>
+		BATCH =34000-34999
+;</BATCH> 
+		TABLE = EIM_CX_ASSATTR
+		ONLY BASE TABLES= S_ASSESS_ATTRIB
+
+        ONLY BASE COLUMNS = S_ASSESS_ATTRIB.ASSESS_TMPL_ID,\
+							S_ASSESS_ATTRIB.NAME,\
+							S_ASSESS_ATTRIB.X_PREV_QUES_ID,\
+							S_ASSESS_ATTRIB.X_PREV_ANS_ID

@@ -1,0 +1,1430 @@
+----------- BEGIN CREATE TABLE [MERGE_WC_RTLAUDIT_F_SK]--------------------------
+
+PRINT 'CREATE TABLE [MERGE_WC_RTLAUDIT_F_SK]'
+GO
+
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[MERGE_WC_RTLAUDIT_F_SK]'))
+DROP TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK]
+GO 
+
+CREATE TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK](
+	[ACCT_GEO_WID] [numeric](10, 0) NOT NULL,
+	[EMP_WID] [numeric](10, 0) NOT NULL,
+	[ETL_PROC_WID] [numeric](10, 0) NOT NULL,
+	[FACING_POS_WID] [numeric](10, 0) NOT NULL,
+	[INTEGRATION_ID] [nvarchar](30) NOT NULL,
+	[INVLOC_WID] [numeric](10, 0) NOT NULL,
+	[LAST_AUDIT_FLG] [nchar](1) NOT NULL,
+	[OBJECTIVE_WID] [numeric](10, 0) NOT NULL,
+	[OWNER_POSTN_WID] [numeric](10, 0) NOT NULL,
+	[PROD_WID] [numeric](10, 0) NOT NULL,
+	[RECORD_DATE_WID] [numeric](10, 0) NOT NULL,
+	[ROW_WID] [numeric](10, 0) NOT NULL,
+	[STORE_WID] [numeric](10, 0) NOT NULL,
+	[BACK_STOCK] [numeric](22, 7) NULL,
+	[DISPLAY_FLG] [nchar](1) NULL,
+	[DISPLAY_STOCK] [numeric](22, 7) NULL,
+	[FACING_NUM] [numeric](22, 7) NULL,
+	[FEATURE_FLG] [nchar](1) NULL,
+	[LAST_REPLENISH_DT] [datetime] NULL,
+	[OUT_OF_STOCK_FLG] [nchar](1) NULL,
+	[PRICE_PT] [numeric](22, 7) NULL,
+	[ROTATED_FLG] [nchar](1) NULL,
+	[SHELF_STOCK] [numeric](22, 7) NULL,
+	[TPR_FLG] [nchar](1) NULL,
+	[TPR_PCT] [numeric](22, 7) NULL,
+	[U_EXCH_DT] [datetime] NULL,
+	[U_PRICE_PT] [numeric](22, 7) NULL,
+	[VOID_FLG] [nchar](1) NULL,
+	[U_CURCY_CD] [nvarchar](20) NULL,
+	[ROW_LOAD_DT] [datetime] NOT NULL,
+	[ATTRIB_06] [numeric](22, 7) NULL,
+	[FK_01_WID] [numeric](10, 0) NULL,
+	[ATTRIB_31] [nvarchar](30) NULL,
+	[ATTRIB_92] [nchar](1) NULL,
+	[ATTRIB_93] [nchar](1) NULL,
+	[ATTRIB_96] [nchar](1) NULL,
+	[ATTRIB_61] [numeric](22, 7) NULL,
+	[ATTRIB_62] [numeric](22, 7) NULL,
+	[ATTRIB_52] [numeric](22, 7) NULL,
+	[ATTRIB_91] [nvarchar](255) NULL,
+	[FK_04_WID] [numeric](10, 0) NULL,
+	[ATTRIB_54] [numeric](10, 0) NULL,
+	[ATTRIB_55] [numeric](10, 0) NULL,
+	[ATTRIB_56] [numeric](10, 0) NULL,
+	[ATTRIB_57] [numeric](10, 0) NULL,
+	[ATTRIB_60] [numeric](22, 7) NULL,
+	[ATTRIB_102] [numeric](10, 0) NULL,
+	[ATTRIB_103] [numeric](22, 7) NULL,
+	[ATTRIB_104] [numeric](22, 7) NULL,
+	[ATTRIB_105] [numeric](22, 7) NULL,
+	[FK_05_WID] [numeric](10, 0) NULL,
+	[FK_06_WID] [numeric](10, 0) NULL,
+	[ATTRIB_106] [numeric](22, 7) NULL,
+	[ATTRIB_107] [nvarchar](100) NULL,
+	[ATTRIB_108] [numeric](22, 7) NULL,
+	[X_BU_ID] [nvarchar](30) NOT NULL,
+	[ATTRIB_109] [nchar](1) NULL,
+	[ATTRIB_110] [numeric](22, 7) NULL,
+	[ATTRIB_111] [numeric](10, 0) NULL,
+	[ATTRIB_112] [numeric](10, 0) NULL,
+	[ATTRIB_113] [numeric](10, 0) NULL,
+	[ATTRIB_114] [nchar](1) NULL,
+	[ATTRIB_115] [nvarchar](20) NULL,
+	[ATTRIB_116] [numeric](22, 7) NULL,
+	[ATTRIB_117] [numeric](10, 0) NULL,
+	[ATTRIB_118] [nvarchar](30) NULL,
+	[ATTRIB_119] [nvarchar](1) NULL,
+	[ATTRIB_120] [nvarchar](10) NULL,
+	[MONTH_WID] [numeric](10, 0) NULL,
+	[X_EXPIRED_QTY_RECALL] [numeric](22, 7) NULL,
+	[X_LAST_REPLENISH_DT] [datetime] NULL,
+	[X_SALESMEN_PRESENCE_FLG] [nchar](1) NULL,
+	[X_UNKNOWN_SOURCE_FLG] [nchar](1) NULL,
+	[X_AVAILABILITY] [nvarchar](30) NULL,
+	[X_OUT_OF_STOCK_FLG] [nchar](1) NULL,
+	[ACTIVITY_ID] [nvarchar](30) NULL,
+	[ACTIVITY_ACTUAL_START_DT_WID] [numeric](10, 0) NULL,
+	[STOCK_NUM] [numeric](10, 0) NULL,
+	[X_QTY_MERCHANDISED] [numeric](22, 7) NULL,
+	[X_SUGGESTED_FLG] [nchar](1) NULL,
+	[X_DAYS_NXT_ORD_NUM] [numeric](10, 0) NULL,
+	[ATTRIB_04] [numeric](22, 7) NULL,
+	[ATTRIB_05] [numeric](22, 7) NULL,
+	[ATTRIB_121] [numeric](10, 0) NULL,
+	[ATTRIB_122] [numeric](10, 0) NULL,
+	[ATTRIB_123] [numeric](10, 0) NULL,
+	[BRAND_WID] [numeric](10, 0) NULL,
+	[GEO_WID] [numeric](10, 0) NULL,
+	[GEO_SEC_WID] [numeric](10, 0) NULL,
+	[X_DOMESTIC_PRICE] [numeric](22, 7) NULL,
+	[X_AVAILABLE_STOCK_NUM] [numeric](22, 7) NULL,
+	[X_CONTRACTED_FLG] [nvarchar](1) NULL,
+	[X_EXCHANGED_LABEL_NUM] [numeric](22, 7) NULL,
+	[X_RETRO_FLG] [nvarchar](1) NULL,
+	[VISIT_INPUT_DT] [datetime] NULL,
+	[X_IN_STOCK_CD] [nvarchar](30) NULL,
+	[X_PMP_FLG] [nvarchar](1) NULL,
+	[X_EXPIRED_PRODUCTS_FLG] [nvarchar](1) NULL,
+	[RTLAUDIT_PREV_WID] [numeric](10, 0) NULL,
+	[PERIOD_WID] [numeric](10, 0) NULL,
+	[DEVELOPMENT_DAY_FLG] [nvarchar](1) NULL,
+	[X_REASON_CODE] [nvarchar](30) NULL,
+	[X_IMPORTANCE_INDICATOR] [nvarchar](30) NULL,
+	[X_SELLING_CARTON_AMT] [numeric](18, 3) NULL,
+	[X_SELLING_CARTON_AMT_USD] [numeric](18, 3) NULL,
+	[X_NB_FACINGS_OOS] [numeric](18, 3) NULL,
+	[X_SKU_POS_CD1] [nvarchar](30) NULL,
+	[X_SKU_POS_CD2] [nvarchar](30) NULL,
+	[X_OOS_REASON_CD] [nvarchar](30) NULL,
+	[X_CONTRACT_PRD_FLG] [nchar](1) NULL,
+	[X_JTI_OOS_EXIT_REASON_CD] [nvarchar](30) NULL,
+	[X_AUDIT_WRONG_FLG] [nchar](1) NOT NULL,
+	[X_AUDIT_COMMENTS_TEXT] [nvarchar](255) NULL,
+	[X_STD_PRICE_PACK_REACHED] [nchar](1) NULL,
+	[X_STD_PRICE_CARTON_REACHED] [nchar](1) NULL,
+	[X_ATTRIBUTE_1] [numeric](22, 7) NULL,
+	[X_SKU_POS_CD4] [nvarchar](30) NULL,
+	[PERFRM_BY_PER_ID] [nvarchar](15) NULL,
+	[X_PRESALE_FLG] [nchar](1) NULL,
+	[X_ACTUAL_ORD_QTY_NUM] [numeric](22, 7) NULL,
+	[DELETE_FLAG] [nchar](1) NULL,
+	[RI_FLG] [nvarchar](1) NULL,
+	[X_CARTON_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_CARTON_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_INDUSTRY_FIXTURE_CD] [nvarchar](30) NULL,
+	[X_FIXTURE_SIZE_CD] [nvarchar](30) NULL,
+	[LAST_CYCLE_FLG] [nchar](1) NULL,
+	[LAST_CYCLE_EMP_FLG] [nchar](1) NULL,
+	[X_FACING_IMP_NUM] [numeric](22, 7) NULL,
+	[X_BU_WID] [numeric](10, 0) NULL,
+	[PROD_POSITION] [nvarchar](30) NULL,
+	[ACTIVITY_TYPE] [nvarchar](30) NULL,
+	[PROD_IMPORTANCE] [nvarchar](30) NULL,
+	[TARGET_POS] [nvarchar](30) NULL,
+	[FACING_POS] [nvarchar](30) NULL,
+	[X_OUT_STOCK_CD] [nvarchar](30) NULL,
+	[X_SIS_CONTRACT_FLG] [nchar](1) NULL,
+	[X_OOS_REASON_CD_VAL] [nvarchar](30) NULL,
+	[X_NO_PACKS_ON_SHELF_NUM] [numeric](10, 0) NULL,
+	[X_NO_OUTERS_ON_SHELF_NUM] [numeric](10, 0) NULL,
+	[X_MPLS_INCREASED_NUM] [numeric](10, 0) NULL,
+	[X_W_SALER_RRP_NUM] [numeric](22, 7) NULL,
+	[X_W_SALER_OUTER_PRICE_NUM] [numeric](22, 7) NULL,
+	[X_W_SALER_POR_NUM] [numeric](22, 7) NULL,
+	[X_JTI_RRP_NUM] [numeric](22, 7) NULL,
+	[ACCNT_COEF_DISTR] [numeric](22, 7) NULL,
+	[X_OOS_RISK] [numeric](22, 7) NULL,
+	[X_WRONG_OOS_RISK_CD] [nvarchar](30) NULL,
+	[ATTRIB_02] [numeric](22, 7) NULL,
+	[X_CAT_FACINGS_2_NUM] [numeric](10, 0) NULL,
+	[ROTATION_FLAG] [nvarchar](1) NULL,
+	[SIS_ROTATION_FLAG] [nvarchar](1) NULL,
+	[X_POR_NUM] [numeric](22, 7) NULL,
+	[X_PROMO_PRICE_CD] [nvarchar](30) NULL,
+	[X_SALES_DISTRIB_NUM] [numeric](22, 7) NULL,
+	[AVAILABILITY_DURATION] [numeric](10, 0) NULL,
+	[OOS_DURATION] [numeric](10, 0) NULL,
+	[X_EXPORT_FLG] [nvarchar](1) NULL,
+	[X_EXPORT_DT] [datetime] NULL,
+	[RTLAUDIT_PREV_DISPLAY_FLG] [nchar](1) NULL,
+	[CYCLE_WID] [numeric](10, 0) NULL,
+	[X_PREV_VISIT_PRICE] [numeric](22, 7) NULL,
+	[X_PRICE_AUDIT_FLG] [nvarchar](1) NULL,
+ CONSTRAINT [MERGE_WC_RTLAUDIT_F_SK_PK] PRIMARY KEY NONCLUSTERED 
+(
+	[ROW_WID] ASC,
+	[X_BU_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95) ON [PRIMARY]
+) ON [PRIMARY]
+
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
+
+GO
+
+CREATE UNIQUE CLUSTERED INDEX [MERGE_WC_RTLAUDIT_F_SK_P1] ON [dbo].[MERGE_WC_RTLAUDIT_F_SK]
+(
+	[RECORD_DATE_WID] ASC,
+	[ROW_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_ACCT_GEO_WID]  DEFAULT ((0)) FOR [ACCT_GEO_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_EMP_WID]  DEFAULT ((0)) FOR [EMP_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_FACING_POS_WID]  DEFAULT ((0)) FOR [FACING_POS_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_INVLOC_WID]  DEFAULT ((0)) FOR [INVLOC_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_OBJECTIVE_WID]  DEFAULT ((0)) FOR [OBJECTIVE_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_OWNER_POSTN_WID]  DEFAULT ((0)) FOR [OWNER_POSTN_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_PROD_WID]  DEFAULT ((0)) FOR [PROD_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_RECORD_DATE_WID]  DEFAULT ((0)) FOR [RECORD_DATE_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_STORE_WID]  DEFAULT ((0)) FOR [STORE_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_GEO_WID]  DEFAULT ((0)) FOR [GEO_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_GEO_SEC_WID]  DEFAULT ((0)) FOR [GEO_SEC_WID]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_X_RETRO_FLG]  DEFAULT ('N') FOR [X_RETRO_FLG]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_X_PMP_FLG]  DEFAULT ('N') FOR [X_PMP_FLG]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_X_AUDIT_WRONG_FLG]  DEFAULT ('N') FOR [X_AUDIT_WRONG_FLG]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_MERGE_WC_RTLAUDIT_F_SK_RI_FLG]  DEFAULT ('N') FOR [RI_FLG]
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK]  WITH CHECK ADD  CONSTRAINT [MERGE_WC_RTLAUDIT_F_SK_BU_ID] CHECK  (([X_BU_ID]='1-7Q8NB3'))
+GO
+
+ALTER TABLE [dbo].[MERGE_WC_RTLAUDIT_F_SK] CHECK CONSTRAINT [MERGE_WC_RTLAUDIT_F_SK_BU_ID]
+GO
+
+------------------------- END CREATE TABLE [MERGE_WC_RTLAUDIT_F_SK] --------------------------
+
+----------- BEGIN CREATE TABLE [WC_LAST_RTLAUDIT_BRAND_A_SK]--------------------------
+
+PRINT 'CREATE TABLE [WC_LAST_RTLAUDIT_BRAND_A_SK]'
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[WC_LAST_RTLAUDIT_BRAND_A_SK]'))
+DROP TABLE [dbo].[WC_LAST_RTLAUDIT_BRAND_A_SK]
+GO 
+
+CREATE TABLE [dbo].[WC_LAST_RTLAUDIT_BRAND_A_SK](
+	[ROW_WID] [numeric](10, 0) NOT NULL,
+	[ETL_PROC_WID] [numeric](10, 0) NOT NULL,
+	[ACTIVITY_ID] [nvarchar](30) NOT NULL,
+	[BRAND_WID] [numeric](10, 0) NOT NULL,
+	[DISPLAY_FLG] [nchar](1) NULL,
+	[ATTRIB_117] [numeric](10, 0) NULL,
+	[EMP_WID] [numeric](10, 0) NULL,
+	[FK_05_WID] [numeric](10, 0) NULL,
+	[FK_06_WID] [numeric](10, 0) NULL,
+	[OWNER_POSTN_WID] [numeric](10, 0) NULL,
+	[RECORD_DATE_WID] [numeric](10, 0) NULL,
+	[STORE_WID] [numeric](10, 0) NULL,
+	[X_BU_ID] [nvarchar](30) NULL,
+	[ATTRIB_04] [numeric](22, 7) NULL,
+	[ATTRIB_05_AVG] [numeric](22, 7) NULL,
+	[ATTRIB_05_SUM] [numeric](22, 7) NULL,
+	[ATTRIB_06] [numeric](22, 7) NULL,
+	[ATTRIB_102] [numeric](10, 0) NULL,
+	[ATTRIB_103] [numeric](22, 7) NULL,
+	[ATTRIB_104] [numeric](22, 7) NULL,
+	[ATTRIB_105] [numeric](22, 7) NULL,
+	[ATTRIB_106] [numeric](22, 7) NULL,
+	[ATTRIB_108] [numeric](22, 7) NULL,
+	[ATTRIB_110] [numeric](22, 7) NULL,
+	[ATTRIB_112] [numeric](10, 0) NULL,
+	[ATTRIB_113] [numeric](10, 0) NULL,
+	[ATTRIB_123] [numeric](10, 0) NULL,
+	[ATTRIB_52] [numeric](10, 0) NULL,
+	[ATTRIB_54] [numeric](10, 0) NULL,
+	[ATTRIB_55] [numeric](10, 0) NULL,
+	[ATTRIB_56] [numeric](10, 0) NULL,
+	[ATTRIB_57] [numeric](10, 0) NULL,
+	[ATTRIB_61] [numeric](22, 7) NULL,
+	[ATTRIB_62] [numeric](22, 7) NULL,
+	[ATTRIB_92] [nchar](1) NULL,
+	[BACK_STOCK] [numeric](22, 7) NULL,
+	[DISPLAY_STOCK] [numeric](22, 7) NULL,
+	[FACING_NUM] [numeric](22, 7) NULL,
+	[OUT_OF_STOCK_FLG] [nchar](1) NULL,
+	[PRICE_PT] [numeric](22, 7) NULL,
+	[U_PRICE_PT] [numeric](22, 7) NULL,
+	[X_DAYS_NXT_ORD_NUM] [numeric](10, 0) NULL,
+	[X_QTY_MERCHANDISED] [numeric](22, 7) NULL,
+	[ATTRIB_111] [numeric](10, 0) NULL,
+	[LAST_AUDIT_FLG] [nchar](1) NULL,
+	[ACTIVITY_WID] [numeric](10, 0) NOT NULL,
+	[LAST_ACTIVITY_FLG] [nchar](1) NOT NULL CONSTRAINT [DF_WC_LAST_RTLAUDIT_BRAND_A_SK_LAST_ACTIVITY_FLG]  DEFAULT ('Y'),
+	[X_SELLING_CARTON_AMT] [numeric](18, 3) NULL,
+	[X_SELLING_CARTON_AMT_USD] [numeric](18, 3) NULL,
+	[X_NB_FACINGS_OOS] [numeric](18, 3) NULL,
+	[X_CONTRACT_PRD_FLG] [nchar](1) NULL,
+	[X_PRESALE_FLG] [nchar](1) NULL,
+	[X_ACTUAL_ORD_QTY_NUM] [numeric](22, 7) NULL,
+	[X_CARTON_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_CARTON_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_INDUSTRY_FIXTURE_CD] [nvarchar](30) NULL,
+	[X_FIXTURE_SIZE_CD] [nvarchar](30) NULL,
+	[FACING_POS_WID] [numeric](10, 0) NULL,
+	[LAST_CYCLE_FLG] [nchar](1) NULL,
+	[LAST_CYCLE_EMP_FLG] [nchar](1) NULL,
+	[X_FACING_IMP_NUM] [numeric](22, 7) NULL,
+	[X_BU_WID] [numeric](10, 0) NULL,
+	[PROD_POSITION] [nvarchar](30) NULL,
+	[ACTIVITY_TYPE] [nvarchar](30) NULL,
+	[X_SIS_CONTRACT_FLG] [nchar](1) NULL,
+	[X_CAT_FACINGS_2_NUM] [numeric](10, 0) NULL,
+	[AVAILABILITY_DURATION] [numeric](10, 0) NULL,
+	[OOS_DURATION] [numeric](10, 0) NULL
+) ON [PRIMARY]
+
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_LAST_RTLAUDIT_BRAND_A_SK]') AND name = N'[CCSI-dbo-WC_LAST_RTLAUDIT_BRAND_A_SK]')
+CREATE CLUSTERED COLUMNSTORE INDEX [CCSI-dbo-WC_LAST_RTLAUDIT_BRAND_A_SK] ON [dbo].[WC_LAST_RTLAUDIT_BRAND_A_SK] WITH (DROP_EXISTING = OFF)
+GO
+
+------------------------- END CREATE TABLE [WC_LAST_RTLAUDIT_BRAND_A_SK] --------------------------
+----------- BEGIN CREATE TABLE [WC_LAST_RTLAUDIT_F_SK]--------------------------
+
+PRINT 'CREATE TABLE [WC_LAST_RTLAUDIT_F_SK]'
+GO
+
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[WC_LAST_RTLAUDIT_F_SK]'))
+DROP TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK]
+GO 
+
+CREATE TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK](
+	[ACCT_GEO_WID] [numeric](10, 0) NOT NULL,
+	[EMP_WID] [numeric](10, 0) NOT NULL,
+	[ETL_PROC_WID] [numeric](10, 0) NOT NULL,
+	[FACING_POS_WID] [numeric](10, 0) NOT NULL,
+	[INTEGRATION_ID] [nvarchar](30) NOT NULL,
+	[INVLOC_WID] [numeric](10, 0) NOT NULL,
+	[LAST_AUDIT_FLG] [nchar](1) NOT NULL,
+	[OBJECTIVE_WID] [numeric](10, 0) NOT NULL,
+	[OWNER_POSTN_WID] [numeric](10, 0) NOT NULL,
+	[PROD_WID] [numeric](10, 0) NOT NULL,
+	[RECORD_DATE_WID] [numeric](10, 0) NOT NULL,
+	[ROW_WID] [numeric](10, 0) NOT NULL,
+	[STORE_WID] [numeric](10, 0) NOT NULL,
+	[BACK_STOCK] [numeric](22, 7) NULL,
+	[DISPLAY_FLG] [nchar](1) NULL,
+	[DISPLAY_STOCK] [numeric](22, 7) NULL,
+	[FACING_NUM] [numeric](22, 7) NULL,
+	[FEATURE_FLG] [nchar](1) NULL,
+	[LAST_REPLENISH_DT] [datetime] NULL,
+	[OUT_OF_STOCK_FLG] [nchar](1) NULL,
+	[PRICE_PT] [numeric](22, 7) NULL,
+	[ROTATED_FLG] [nchar](1) NULL,
+	[SHELF_STOCK] [numeric](22, 7) NULL,
+	[TPR_FLG] [nchar](1) NULL,
+	[TPR_PCT] [numeric](22, 7) NULL,
+	[U_EXCH_DT] [datetime] NULL,
+	[U_PRICE_PT] [numeric](22, 7) NULL,
+	[VOID_FLG] [nchar](1) NULL,
+	[U_CURCY_CD] [nvarchar](20) NULL,
+	[ROW_LOAD_DT] [datetime] NOT NULL,
+	[ATTRIB_06] [numeric](22, 7) NULL,
+	[FK_01_WID] [numeric](10, 0) NULL,
+	[ATTRIB_31] [nvarchar](30) NULL,
+	[ATTRIB_92] [nchar](1) NULL,
+	[ATTRIB_93] [nchar](1) NULL,
+	[ATTRIB_96] [nchar](1) NULL,
+	[ATTRIB_61] [numeric](22, 7) NULL,
+	[ATTRIB_62] [numeric](22, 7) NULL,
+	[ATTRIB_52] [numeric](22, 7) NULL,
+	[ATTRIB_91] [nvarchar](255) NULL,
+	[FK_04_WID] [numeric](10, 0) NULL,
+	[ATTRIB_54] [numeric](10, 0) NULL,
+	[ATTRIB_55] [numeric](10, 0) NULL,
+	[ATTRIB_56] [numeric](10, 0) NULL,
+	[ATTRIB_57] [numeric](10, 0) NULL,
+	[ATTRIB_60] [numeric](22, 7) NULL,
+	[ATTRIB_102] [numeric](10, 0) NULL,
+	[ATTRIB_103] [numeric](22, 7) NULL,
+	[ATTRIB_104] [numeric](22, 7) NULL,
+	[ATTRIB_105] [numeric](22, 7) NULL,
+	[FK_05_WID] [numeric](10, 0) NULL,
+	[FK_06_WID] [numeric](10, 0) NULL,
+	[ATTRIB_106] [numeric](22, 7) NULL,
+	[ATTRIB_107] [nvarchar](100) NULL,
+	[ATTRIB_108] [numeric](22, 7) NULL,
+	[X_BU_ID] [nvarchar](30) NULL,
+	[ATTRIB_109] [nchar](1) NULL,
+	[ATTRIB_110] [numeric](22, 7) NULL,
+	[ATTRIB_111] [numeric](10, 0) NULL,
+	[ATTRIB_112] [numeric](10, 0) NULL,
+	[ATTRIB_113] [numeric](10, 0) NULL,
+	[ATTRIB_114] [nchar](1) NULL,
+	[ATTRIB_115] [nvarchar](20) NULL,
+	[ATTRIB_116] [numeric](22, 7) NULL,
+	[ATTRIB_117] [numeric](10, 0) NULL,
+	[ATTRIB_118] [nvarchar](30) NULL,
+	[ATTRIB_119] [nvarchar](1) NULL,
+	[ATTRIB_120] [nvarchar](10) NULL,
+	[MONTH_WID] [numeric](10, 0) NULL,
+	[X_EXPIRED_QTY_RECALL] [numeric](22, 7) NULL,
+	[X_LAST_REPLENISH_DT] [datetime] NULL,
+	[X_SALESMEN_PRESENCE_FLG] [nchar](1) NULL,
+	[X_UNKNOWN_SOURCE_FLG] [nchar](1) NULL,
+	[X_AVAILABILITY] [nvarchar](30) NULL,
+	[X_OUT_OF_STOCK_FLG] [nchar](1) NULL,
+	[ACTIVITY_WID] [numeric](10, 0) NOT NULL,
+	[ACTIVITY_ID] [nvarchar](30) NULL,
+	[ACTIVITY_ACTUAL_START_DT_WID] [numeric](10, 0) NULL,
+	[LAST_ACTIVITY_FLG] [nchar](1) NOT NULL,
+	[STOCK_NUM] [numeric](10, 0) NULL,
+	[X_QTY_MERCHANDISED] [numeric](22, 7) NULL,
+	[X_SUGGESTED_FLG] [nchar](1) NULL,
+	[X_DAYS_NXT_ORD_NUM] [numeric](10, 0) NULL,
+	[ATTRIB_04] [numeric](22, 7) NULL,
+	[ATTRIB_05] [numeric](22, 7) NULL,
+	[ATTRIB_121] [numeric](10, 0) NULL,
+	[ATTRIB_122] [numeric](10, 0) NULL,
+	[ATTRIB_123] [numeric](10, 0) NULL,
+	[GEO_WID] [numeric](10, 0) NULL,
+	[GEO_SEC_WID] [numeric](10, 0) NULL,
+	[X_DOMESTIC_PRICE] [numeric](22, 7) NULL,
+	[X_AVAILABLE_STOCK_NUM] [numeric](22, 7) NULL,
+	[X_CONTRACTED_FLG] [nvarchar](1) NULL,
+	[X_EXCHANGED_LABEL_NUM] [numeric](22, 7) NULL,
+	[X_RETRO_FLG] [nvarchar](1) NULL,
+	[VISIT_INPUT_DT] [datetime] NULL,
+	[X_IN_STOCK_CD] [nvarchar](30) NULL,
+	[X_PMP_FLG] [nvarchar](1) NULL,
+	[X_EXPIRED_PRODUCTS_FLG] [nvarchar](1) NULL,
+	[RTLAUDIT_PREV_WID] [numeric](10, 0) NULL,
+	[PERIOD_WID] [numeric](10, 0) NULL,
+	[DEVELOPMENT_DAY_FLG] [nvarchar](1) NULL,
+	[X_REASON_CODE] [nvarchar](30) NULL,
+	[X_IMPORTANCE_INDICATOR] [nvarchar](30) NULL,
+	[X_SELLING_CARTON_AMT] [numeric](18, 3) NULL,
+	[X_SELLING_CARTON_AMT_USD] [numeric](18, 3) NULL,
+	[X_NB_FACINGS_OOS] [numeric](18, 3) NULL,
+	[X_SKU_POS_CD1] [nvarchar](30) NULL,
+	[X_SKU_POS_CD2] [nvarchar](30) NULL,
+	[X_OOS_REASON_CD] [nvarchar](30) NULL,
+	[X_CONTRACT_PRD_FLG] [nchar](1) NULL,
+	[X_JTI_OOS_EXIT_REASON_CD] [nvarchar](30) NULL,
+	[X_AUDIT_WRONG_FLG] [nchar](1) NULL,
+	[X_AUDIT_COMMENTS_TEXT] [nvarchar](255) NULL,
+	[X_STD_PRICE_PACK_REACHED] [nchar](1) NULL,
+	[X_STD_PRICE_CARTON_REACHED] [nchar](1) NULL,
+	[X_ATTRIBUTE_1] [numeric](22, 7) NULL,
+	[X_SKU_POS_CD4] [nvarchar](30) NULL,
+	[X_PRESALE_FLG] [nchar](1) NULL,
+	[X_ACTUAL_ORD_QTY_NUM] [numeric](22, 7) NULL,
+	[X_CARTON_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_CARTON_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_INDUSTRY_FIXTURE_CD] [nvarchar](30) NULL,
+	[X_FIXTURE_SIZE_CD] [nvarchar](30) NULL,
+	[LAST_CYCLE_FLG] [nchar](1) NULL,
+	[LAST_CYCLE_EMP_FLG] [nchar](1) NULL,
+	[X_FACING_IMP_NUM] [numeric](22, 7) NULL,
+	[X_BU_WID] [numeric](10, 0) NULL,
+	[PROD_POSITION] [nvarchar](30) NULL,
+	[ACTIVITY_TYPE] [nvarchar](30) NULL,
+	[PROD_IMPORTANCE] [nvarchar](30) NULL,
+	[TARGET_POS] [nvarchar](30) NULL,
+	[FACING_POS] [nvarchar](30) NULL,
+	[X_OUT_STOCK_CD] [nvarchar](30) NULL,
+	[X_SIS_CONTRACT_FLG] [nchar](1) NULL,
+	[X_OOS_REASON_CD_VAL] [nvarchar](30) NULL,
+	[X_MPLS_INCREASED_NUM] [numeric](10, 0) NULL,
+	[X_W_SALER_RRP_NUM] [numeric](22, 7) NULL,
+	[X_W_SALER_OUTER_PRICE_NUM] [numeric](22, 7) NULL,
+	[X_W_SALER_POR_NUM] [numeric](22, 7) NULL,
+	[X_JTI_RRP_NUM] [numeric](22, 7) NULL,
+	[X_NO_PACKS_ON_SHELF_NUM] [numeric](10, 0) NULL,
+	[X_NO_OUTERS_ON_SHELF_NUM] [numeric](10, 0) NULL,
+	[X_OOS_RISK] [numeric](22, 7) NULL,
+	[X_WRONG_OOS_RISK_CD] [nvarchar](30) NULL,
+	[ATTRIB_02] [numeric](22, 7) NULL,
+	[X_CAT_FACINGS_2_NUM] [numeric](10, 0) NULL,
+	[ROTATION_FLAG] [nvarchar](1) NULL,
+	[SIS_ROTATION_FLAG] [nvarchar](1) NULL,
+	[X_POR_NUM] [numeric](22, 7) NULL,
+	[X_PROMO_PRICE_CD] [nvarchar](30) NULL,
+	[X_SALES_DISTRIB_NUM] [numeric](22, 7) NULL,
+	[AVAILABILITY_DURATION] [numeric](10, 0) NULL,
+	[OOS_DURATION] [numeric](10, 0) NULL,
+	[RTLAUDIT_PREV_DISPLAY_FLG] [nchar](1) NULL,
+	[CYCLE_WID] [numeric](10, 0) NULL,
+	[X_PREV_VISIT_PRICE] [numeric](22, 7) NULL,
+	[X_PRICE_AUDIT_FLG] [nvarchar](1) NULL
+) ON [PRIMARY]
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_LAST_RTLAUDIT_F_SK]') AND name = N'[CCSI-dbo-WC_LAST_RTLAUDIT_F_SK]')
+CREATE CLUSTERED COLUMNSTORE INDEX [CCSI-dbo-WC_LAST_RTLAUDIT_F_SK] ON [dbo].[WC_LAST_RTLAUDIT_F_SK] WITH (DROP_EXISTING = OFF)
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_ACCT_GEO_WID]  DEFAULT ((0)) FOR [ACCT_GEO_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_EMP_WID]  DEFAULT ((0)) FOR [EMP_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_FACING_POS_WID]  DEFAULT ((0)) FOR [FACING_POS_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_INVLOC_WID]  DEFAULT ((0)) FOR [INVLOC_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_OBJECTIVE_WID]  DEFAULT ((0)) FOR [OBJECTIVE_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_OWNER_POSTN_WID]  DEFAULT ((0)) FOR [OWNER_POSTN_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_PROD_WID]  DEFAULT ((0)) FOR [PROD_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_RECORD_DATE_WID]  DEFAULT ((0)) FOR [RECORD_DATE_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_STORE_WID]  DEFAULT ((0)) FOR [STORE_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_LAST_ACTIVITY_FLG]  DEFAULT ('Y') FOR [LAST_ACTIVITY_FLG]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_GEO_WID]  DEFAULT ((0)) FOR [GEO_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_GEO_SEC_WID]  DEFAULT ((0)) FOR [GEO_SEC_WID]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_X_RETRO_FLG]  DEFAULT ('N') FOR [X_RETRO_FLG]
+GO
+
+ALTER TABLE [dbo].[WC_LAST_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_LAST_RTLAUDIT_F_SK_X_PMP_FLG]  DEFAULT ('N') FOR [X_PMP_FLG]
+GO
+
+------------------------- END CREATE TABLE [WC_LAST_RTLAUDIT_F_SK] --------------------------
+
+
+----------- BEGIN CREATE TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK]--------------------------
+
+PRINT 'CREATE TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK]'
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[WC_RTLAUDIT_BRAND_A_SK]'))
+DROP TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK]
+GO 
+
+CREATE TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK](
+	[ROW_WID] [numeric](10, 0) IDENTITY(1,1) NOT NULL,
+	[ETL_PROC_WID] [numeric](10, 0) NOT NULL,
+	[ACTIVITY_ID] [nvarchar](30) NOT NULL,
+	[BRAND_WID] [numeric](10, 0) NOT NULL,
+	[DISPLAY_FLG] [nchar](1) NULL,
+	[ATTRIB_117] [numeric](10, 0) NULL,
+	[EMP_WID] [numeric](10, 0) NOT NULL,
+	[FK_05_WID] [numeric](10, 0) NOT NULL,
+	[FK_06_WID] [numeric](10, 0) NOT NULL,
+	[OWNER_POSTN_WID] [numeric](10, 0) NOT NULL,
+	[RECORD_DATE_WID] [numeric](10, 0) NOT NULL,
+	[STORE_WID] [numeric](10, 0) NOT NULL,
+	[X_BU_ID] [nvarchar](30) NOT NULL,
+	[ATTRIB_04] [numeric](22, 7) NULL,
+	[ATTRIB_05_AVG] [numeric](22, 7) NULL,
+	[ATTRIB_05_SUM] [numeric](22, 7) NULL,
+	[ATTRIB_06] [numeric](22, 7) NULL,
+	[ATTRIB_102] [numeric](10, 0) NULL,
+	[ATTRIB_103] [numeric](22, 7) NULL,
+	[ATTRIB_104] [numeric](22, 7) NULL,
+	[ATTRIB_105] [numeric](22, 7) NULL,
+	[ATTRIB_106] [numeric](22, 7) NULL,
+	[ATTRIB_108] [numeric](22, 7) NULL,
+	[ATTRIB_110] [numeric](22, 7) NULL,
+	[ATTRIB_112] [numeric](10, 0) NULL,
+	[ATTRIB_113] [numeric](10, 0) NULL,
+	[ATTRIB_123] [numeric](10, 0) NULL,
+	[ATTRIB_52] [numeric](10, 0) NULL,
+	[ATTRIB_54] [numeric](10, 0) NULL,
+	[ATTRIB_55] [numeric](10, 0) NULL,
+	[ATTRIB_56] [numeric](10, 0) NULL,
+	[ATTRIB_57] [numeric](10, 0) NULL,
+	[ATTRIB_61] [numeric](22, 7) NULL,
+	[ATTRIB_62] [numeric](22, 7) NULL,
+	[ATTRIB_92] [nchar](1) NULL,
+	[BACK_STOCK] [numeric](22, 7) NULL,
+	[DISPLAY_STOCK] [numeric](22, 7) NULL,
+	[FACING_NUM] [numeric](22, 7) NULL,
+	[OUT_OF_STOCK_FLG] [nchar](1) NULL,
+	[PRICE_PT] [numeric](22, 7) NULL,
+	[U_PRICE_PT] [numeric](22, 7) NULL,
+	[X_DAYS_NXT_ORD_NUM] [numeric](10, 0) NULL,
+	[X_QTY_MERCHANDISED] [numeric](22, 7) NULL,
+	[ATTRIB_111] [numeric](10, 0) NULL,
+	[LAST_AUDIT_FLG] [nchar](1) NULL,
+	[X_SELLING_CARTON_AMT] [numeric](18, 3) NULL,
+	[X_SELLING_CARTON_AMT_USD] [numeric](18, 3) NULL,
+	[X_NB_FACINGS_OOS] [numeric](18, 3) NULL,
+	[X_CONTRACT_PRD_FLG] [nchar](1) NULL,
+	[X_PRESALE_FLG] [nchar](1) NULL,
+	[X_ACTUAL_ORD_QTY_NUM] [numeric](22, 7) NULL,
+	[X_CARTON_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_CARTON_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_INDUSTRY_FIXTURE_CD] [nvarchar](30) NULL,
+	[X_FIXTURE_SIZE_CD] [nvarchar](30) NULL,
+	[FACING_POS_WID] [numeric](10, 0) NULL,
+	[LAST_CYCLE_FLG] [nchar](1) NULL,
+	[LAST_CYCLE_EMP_FLG] [nchar](1) NULL,
+	[X_FACING_IMP_NUM] [numeric](22, 7) NULL,
+	[X_BU_WID] [numeric](10, 0) NULL,
+	[PROD_POSITION] [nvarchar](30) NULL,
+	[ACTIVITY_TYPE] [nvarchar](30) NULL,
+	[X_SIS_CONTRACT_FLG] [nchar](1) NULL,
+	[X_CAT_FACINGS_2_NUM] [numeric](10, 0) NULL,
+	[AVAILABILITY_DURATION] [numeric](10, 0) NULL,
+	[OOS_DURATION] [numeric](10, 0) NULL
+) ON [PRIMARY]
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_RTLAUDIT_BRAND_A_SK]') AND name = N'[CCSI-dbo-WC_RTLAUDIT_BRAND_A_SK]')
+CREATE CLUSTERED COLUMNSTORE INDEX [CCSI-dbo-WC_RTLAUDIT_BRAND_A_SK] ON [dbo].[WC_RTLAUDIT_BRAND_A_SK] WITH (DROP_EXISTING = OFF)
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_BRAND_A_SK_BRAND_WID]  DEFAULT ((0)) FOR [BRAND_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_BRAND_A_SK_EMP_WID]  DEFAULT ((0)) FOR [EMP_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_BRAND_A_SK_FK_05_WID]  DEFAULT ((0)) FOR [FK_05_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_BRAND_A_SK_FK_06_WID]  DEFAULT ((0)) FOR [FK_06_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_BRAND_A_SK_OWNER_POSTN_WID]  DEFAULT ((0)) FOR [OWNER_POSTN_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_BRAND_A_SK_RECORD_DATE_WID]  DEFAULT ((0)) FOR [RECORD_DATE_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_BRAND_A_SK_STORE_WID]  DEFAULT ((0)) FOR [STORE_WID]
+GO
+
+------------------------- END CREATE TABLE [dbo].[WC_RTLAUDIT_BRAND_A_SK] --------------------------
+
+
+----------- BEGIN CREATE TABLE [dbo].[WC_RTLAUDIT_F_SK]--------------------------
+
+PRINT 'CREATE TABLE [WC_RTLAUDIT_F_SK]'
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[WC_RTLAUDIT_F_SK]'))
+DROP TABLE [dbo].[WC_RTLAUDIT_F_SK]
+GO 
+
+CREATE TABLE [dbo].[WC_RTLAUDIT_F_SK](
+	[ACCT_GEO_WID] [numeric](10, 0) NOT NULL,
+	[EMP_WID] [numeric](10, 0) NOT NULL,
+	[ETL_PROC_WID] [numeric](10, 0) NOT NULL,
+	[FACING_POS_WID] [numeric](10, 0) NOT NULL,
+	[INTEGRATION_ID] [nvarchar](30) NOT NULL,
+	[INVLOC_WID] [numeric](10, 0) NOT NULL,
+	[LAST_AUDIT_FLG] [nchar](1) NOT NULL,
+	[OBJECTIVE_WID] [numeric](10, 0) NOT NULL,
+	[OWNER_POSTN_WID] [numeric](10, 0) NOT NULL,
+	[PROD_WID] [numeric](10, 0) NOT NULL,
+	[RECORD_DATE_WID] [numeric](10, 0) NOT NULL,
+	[ROW_WID] [numeric](10, 0) NOT NULL,
+	[STORE_WID] [numeric](10, 0) NOT NULL,
+	[BACK_STOCK] [numeric](22, 7) NULL,
+	[DISPLAY_FLG] [nchar](1) NULL,
+	[DISPLAY_STOCK] [numeric](22, 7) NULL,
+	[FACING_NUM] [numeric](22, 7) NULL,
+	[FEATURE_FLG] [nchar](1) NULL,
+	[LAST_REPLENISH_DT] [datetime] NULL,
+	[OUT_OF_STOCK_FLG] [nchar](1) NULL,
+	[PRICE_PT] [numeric](22, 7) NULL,
+	[ROTATED_FLG] [nchar](1) NULL,
+	[SHELF_STOCK] [numeric](22, 7) NULL,
+	[TPR_FLG] [nchar](1) NULL,
+	[TPR_PCT] [numeric](22, 7) NULL,
+	[U_EXCH_DT] [datetime] NULL,
+	[U_PRICE_PT] [numeric](22, 7) NULL,
+	[VOID_FLG] [nchar](1) NULL,
+	[U_CURCY_CD] [nvarchar](20) NULL,
+	[ROW_LOAD_DT] [datetime] NOT NULL,
+	[ATTRIB_06] [numeric](22, 7) NULL,
+	[FK_01_WID] [numeric](10, 0) NULL,
+	[ATTRIB_31] [nvarchar](30) NULL,
+	[ATTRIB_92] [nchar](1) NULL,
+	[ATTRIB_93] [nchar](1) NULL,
+	[ATTRIB_96] [nchar](1) NULL,
+	[ATTRIB_61] [numeric](22, 7) NULL,
+	[ATTRIB_62] [numeric](22, 7) NULL,
+	[ATTRIB_52] [numeric](22, 7) NULL,
+	[ATTRIB_91] [nvarchar](255) NULL,
+	[FK_04_WID] [numeric](10, 0) NULL,
+	[ATTRIB_54] [numeric](10, 0) NULL,
+	[ATTRIB_55] [numeric](10, 0) NULL,
+	[ATTRIB_56] [numeric](10, 0) NULL,
+	[ATTRIB_57] [numeric](10, 0) NULL,
+	[ATTRIB_60] [numeric](22, 7) NULL,
+	[ATTRIB_102] [numeric](10, 0) NULL,
+	[ATTRIB_103] [numeric](22, 7) NULL,
+	[ATTRIB_104] [numeric](22, 7) NULL,
+	[ATTRIB_105] [numeric](22, 7) NULL,
+	[FK_05_WID] [numeric](10, 0) NULL,
+	[FK_06_WID] [numeric](10, 0) NULL,
+	[ATTRIB_106] [numeric](22, 7) NULL,
+	[ATTRIB_107] [nvarchar](100) NULL,
+	[ATTRIB_108] [numeric](22, 7) NULL,
+	[X_BU_ID] [nvarchar](30) NOT NULL,
+	[ATTRIB_109] [nchar](1) NULL,
+	[ATTRIB_110] [numeric](22, 7) NULL,
+	[ATTRIB_111] [numeric](10, 0) NULL,
+	[ATTRIB_112] [numeric](10, 0) NULL,
+	[ATTRIB_113] [numeric](10, 0) NULL,
+	[ATTRIB_114] [nchar](1) NULL,
+	[ATTRIB_115] [nvarchar](20) NULL,
+	[ATTRIB_116] [numeric](22, 7) NULL,
+	[ATTRIB_117] [numeric](10, 0) NULL,
+	[ATTRIB_118] [nvarchar](30) NULL,
+	[ATTRIB_119] [nvarchar](1) NULL,
+	[ATTRIB_120] [nvarchar](10) NULL,
+	[MONTH_WID] [numeric](10, 0) NULL,
+	[X_EXPIRED_QTY_RECALL] [numeric](22, 7) NULL,
+	[X_LAST_REPLENISH_DT] [datetime] NULL,
+	[X_SALESMEN_PRESENCE_FLG] [nchar](1) NULL,
+	[X_UNKNOWN_SOURCE_FLG] [nchar](1) NULL,
+	[X_AVAILABILITY] [nvarchar](30) NULL,
+	[X_OUT_OF_STOCK_FLG] [nchar](1) NULL,
+	[ACTIVITY_ID] [nvarchar](30) NULL,
+	[ACTIVITY_ACTUAL_START_DT_WID] [numeric](10, 0) NULL,
+	[STOCK_NUM] [numeric](10, 0) NULL,
+	[X_QTY_MERCHANDISED] [numeric](22, 7) NULL,
+	[X_SUGGESTED_FLG] [nchar](1) NULL,
+	[X_DAYS_NXT_ORD_NUM] [numeric](10, 0) NULL,
+	[ATTRIB_04] [numeric](22, 7) NULL,
+	[ATTRIB_05] [numeric](22, 7) NULL,
+	[ATTRIB_121] [numeric](10, 0) NULL,
+	[ATTRIB_122] [numeric](10, 0) NULL,
+	[ATTRIB_123] [numeric](10, 0) NULL,
+	[BRAND_WID] [numeric](10, 0) NULL,
+	[GEO_WID] [numeric](10, 0) NULL,
+	[GEO_SEC_WID] [numeric](10, 0) NULL,
+	[X_DOMESTIC_PRICE] [numeric](22, 7) NULL,
+	[X_AVAILABLE_STOCK_NUM] [numeric](22, 7) NULL,
+	[X_CONTRACTED_FLG] [nvarchar](1) NULL,
+	[X_EXCHANGED_LABEL_NUM] [numeric](22, 7) NULL,
+	[X_RETRO_FLG] [nvarchar](1) NULL,
+	[VISIT_INPUT_DT] [datetime] NULL,
+	[X_IN_STOCK_CD] [nvarchar](30) NULL,
+	[X_PMP_FLG] [nvarchar](1) NULL,
+	[X_EXPIRED_PRODUCTS_FLG] [nvarchar](1) NULL,
+	[RTLAUDIT_PREV_WID] [numeric](10, 0) NULL,
+	[PERIOD_WID] [numeric](10, 0) NULL,
+	[DEVELOPMENT_DAY_FLG] [nvarchar](1) NULL,
+	[X_REASON_CODE] [nvarchar](30) NULL,
+	[X_IMPORTANCE_INDICATOR] [nvarchar](30) NULL,
+	[X_SELLING_CARTON_AMT] [numeric](18, 3) NULL,
+	[X_SELLING_CARTON_AMT_USD] [numeric](18, 3) NULL,
+	[X_NB_FACINGS_OOS] [numeric](18, 3) NULL,
+	[X_SKU_POS_CD1] [nvarchar](30) NULL,
+	[X_SKU_POS_CD2] [nvarchar](30) NULL,
+	[X_OOS_REASON_CD] [nvarchar](30) NULL,
+	[X_CONTRACT_PRD_FLG] [nchar](1) NULL,
+	[X_JTI_OOS_EXIT_REASON_CD] [nvarchar](30) NULL,
+	[X_AUDIT_WRONG_FLG] [nchar](1) NOT NULL,
+	[X_AUDIT_COMMENTS_TEXT] [nvarchar](255) NULL,
+	[X_STD_PRICE_PACK_REACHED] [nchar](1) NULL,
+	[X_STD_PRICE_CARTON_REACHED] [nchar](1) NULL,
+	[X_ATTRIBUTE_1] [numeric](22, 7) NULL,
+	[X_SKU_POS_CD4] [nvarchar](30) NULL,
+	[PERFRM_BY_PER_ID] [nvarchar](15) NULL,
+	[X_PRESALE_FLG] [nchar](1) NULL,
+	[X_ACTUAL_ORD_QTY_NUM] [numeric](22, 7) NULL,
+	[DELETE_FLAG] [nchar](1) NULL,
+	[RI_FLG] [nvarchar](1) NULL,
+	[X_CARTON_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_CARTON_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_LOCATION_CD] [nvarchar](30) NULL,
+	[X_PACK_PLATFORM_CD] [nvarchar](30) NULL,
+	[X_INDUSTRY_FIXTURE_CD] [nvarchar](30) NULL,
+	[X_FIXTURE_SIZE_CD] [nvarchar](30) NULL,
+	[LAST_CYCLE_FLG] [nchar](1) NULL,
+	[LAST_CYCLE_EMP_FLG] [nchar](1) NULL,
+	[X_FACING_IMP_NUM] [numeric](22, 7) NULL,
+	[X_BU_WID] [numeric](10, 0) NULL,
+	[PROD_POSITION] [nvarchar](30) NULL,
+	[ACTIVITY_TYPE] [nvarchar](30) NULL,
+	[PROD_IMPORTANCE] [nvarchar](30) NULL,
+	[TARGET_POS] [nvarchar](30) NULL,
+	[FACING_POS] [nvarchar](30) NULL,
+	[X_OUT_STOCK_CD] [nvarchar](30) NULL,
+	[X_SIS_CONTRACT_FLG] [nchar](1) NULL,
+	[X_OOS_REASON_CD_VAL] [nvarchar](30) NULL,
+	[X_NO_PACKS_ON_SHELF_NUM] [numeric](10, 0) NULL,
+	[X_NO_OUTERS_ON_SHELF_NUM] [numeric](10, 0) NULL,
+	[X_MPLS_INCREASED_NUM] [numeric](10, 0) NULL,
+	[X_W_SALER_RRP_NUM] [numeric](22, 7) NULL,
+	[X_W_SALER_OUTER_PRICE_NUM] [numeric](22, 7) NULL,
+	[X_W_SALER_POR_NUM] [numeric](22, 7) NULL,
+	[X_JTI_RRP_NUM] [numeric](22, 7) NULL,
+	[ACCNT_COEF_DISTR] [numeric](22, 7) NULL,
+	[X_OOS_RISK] [numeric](22, 7) NULL,
+	[X_WRONG_OOS_RISK_CD] [nvarchar](30) NULL,
+	[ATTRIB_02] [numeric](22, 7) NULL,
+	[X_CAT_FACINGS_2_NUM] [numeric](10, 0) NULL,
+	[ROTATION_FLAG] [nvarchar](1) NULL,
+	[SIS_ROTATION_FLAG] [nvarchar](1) NULL,
+	[X_POR_NUM] [numeric](22, 7) NULL,
+	[X_PROMO_PRICE_CD] [nvarchar](30) NULL,
+	[X_SALES_DISTRIB_NUM] [numeric](22, 7) NULL,
+	[AVAILABILITY_DURATION] [numeric](10, 0) NULL,
+	[OOS_DURATION] [numeric](10, 0) NULL,
+	[X_EXPORT_FLG] [nvarchar](1) NULL,
+	[X_EXPORT_DT] [datetime] NULL,
+	[RTLAUDIT_PREV_DISPLAY_FLG] [nchar](1) NULL,
+	[CYCLE_WID] [numeric](10, 0) NULL,
+	[X_PREV_VISIT_PRICE] [numeric](22, 7) NULL,
+	[X_PRICE_AUDIT_FLG] [nvarchar](1) NULL
+) ON [PRIMARY]
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_RTLAUDIT_F_SK]') AND name = N'[CCSI-dbo-WC_RTLAUDIT_F_SK]')
+CREATE CLUSTERED COLUMNSTORE INDEX [CCSI-dbo-WC_RTLAUDIT_F_SK] ON [dbo].[WC_RTLAUDIT_F_SK] WITH (DROP_EXISTING = OFF)
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_ACCT_GEO_WID]  DEFAULT ((0)) FOR [ACCT_GEO_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_EMP_WID]  DEFAULT ((0)) FOR [EMP_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_FACING_POS_WID]  DEFAULT ((0)) FOR [FACING_POS_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_INVLOC_WID]  DEFAULT ((0)) FOR [INVLOC_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_OBJECTIVE_WID]  DEFAULT ((0)) FOR [OBJECTIVE_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_OWNER_POSTN_WID]  DEFAULT ((0)) FOR [OWNER_POSTN_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_PROD_WID]  DEFAULT ((0)) FOR [PROD_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_RECORD_DATE_WID]  DEFAULT ((0)) FOR [RECORD_DATE_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_STORE_WID]  DEFAULT ((0)) FOR [STORE_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_GEO_WID]  DEFAULT ((0)) FOR [GEO_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_GEO_SEC_WID]  DEFAULT ((0)) FOR [GEO_SEC_WID]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_X_RETRO_FLG]  DEFAULT ('N') FOR [X_RETRO_FLG]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_X_PMP_FLG]  DEFAULT ('N') FOR [X_PMP_FLG]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_X_AUDIT_WRONG_FLG]  DEFAULT ('N') FOR [X_AUDIT_WRONG_FLG]
+GO
+
+ALTER TABLE [dbo].[WC_RTLAUDIT_F_SK] ADD  CONSTRAINT [DF_WC_RTLAUDIT_F_SK_RI_FLG]  DEFAULT ('N') FOR [RI_FLG]
+GO
+
+------------------------- END CREATE TABLE [dbo].[WC_RTLAUDIT_F_SK] --------------------------
+
+----------- BEGIN CREATE TABLE [dbo].[WC_RTLAUDIT_ML_M_TREND_A_SK]--------------------------
+
+PRINT 'CREATE TABLE [WC_RTLAUDIT_ML_M_TREND_A_SK]'
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[WC_RTLAUDIT_M_TREND_A_SK]'))
+DROP TABLE [dbo].[WC_RTLAUDIT_M_TREND_A_SK]
+GO 
+
+CREATE TABLE [dbo].[WC_RTLAUDIT_M_TREND_A_SK](
+	[ROW_WID] [numeric](10, 0) NULL,
+	[MONTH_WID] [numeric](10, 0) NOT NULL DEFAULT ((0)),
+	[PROD_WID] [numeric](10, 0) NOT NULL DEFAULT ((0)),
+	[ACCNT_WID] [numeric](10, 0) NULL DEFAULT ((0)),
+	[INVLOC_WID] [numeric](10, 0) NULL DEFAULT ((0)),
+	[DISPLAY_FLG] [nchar](1) NULL,
+	[OUT_OF_STOCK_FLG] [nchar](1) NULL,
+	[FACING_NUM] [numeric](22, 7) NULL,
+	[SLOTS_NUM] [numeric](10, 0) NULL,
+	[ACTIVITY_TYPE] [numeric](10, 0) NULL DEFAULT ((0)),
+	[REPLENISH_FLG] [nchar](1) NULL,
+	[REPLENISH_QTY] [numeric](22, 7) NULL,
+	[ACTL_SHIPMENT_QTY] [numeric](22, 7) NULL,
+	[BASE_ENTRY_FLG] [nvarchar](3) NULL,
+	[OWNER_POSTN_WID] [numeric](10, 0) NULL,
+	[EMP_WID] [numeric](10, 0) NULL,
+	[TC_FACING_NUM] [numeric](22, 7) NULL,
+	[BU_ID] [nvarchar](30) NULL,
+	[ATTRIB_117] [numeric](22, 7) NULL,
+	[CORRECTED_OOS] [nchar](1) NULL,
+	[ATTRIB_52] [numeric](10, 0) NULL,
+	[ATTRIB_96] [nchar](1) NULL,
+	[STOCK_NUM] [numeric](10, 0) NULL,
+	[ATTRIB_121] [numeric](10, 0) NULL,
+	[ATTRIB_122] [numeric](10, 0) NULL,
+	[X_SELLING_CARTON_AMT] [numeric](18, 3) NULL,
+	[X_SELLING_CARTON_AMT_USD] [numeric](18, 3) NULL,
+	[ATTRIB_119] [nchar](1) NULL,
+	[X_NB_FACINGS_OOS] [numeric](18, 3) NULL,
+	[X_SKU_POS_CD1] [nvarchar](30) NULL,
+	[X_SKU_POS_CD2] [nvarchar](30) NULL,
+	[X_OOS_REASON_CD] [nvarchar](30) NULL,
+	[X_CONTRACT_PRD_FLG] [nchar](1) NULL,
+	[U_PRICE_PT] [numeric](22, 7) NULL,
+	[X_STD_PRICE_PACK_REACHED] [nchar](1) NULL,
+	[X_STD_PRICE_CARTON_REACHED] [nchar](1) NULL,
+	[U_CURCY_CD] [nvarchar](20) NULL,
+	[ATTRIB_115] [nvarchar](20) NULL,
+	[PRICE_PT] [numeric](22, 7) NULL,
+	[ATTRIB_106] [numeric](22, 7) NULL,
+	[ATTRIB_116] [numeric](22, 7) NULL,
+	[X_SKU_POS_CD4] [nvarchar](30) NULL,
+	[INVLOV_SLOTS_NUM] [numeric](10, 0) NULL,
+	[INVLOC_FACINGS_NUM] [numeric](10, 0) NULL,
+	[X_EXPIRED_PRODUCTS_FLG] [nchar](1) NULL,
+	[PROD_POSITION] [nvarchar](30) NULL,
+	[ACTIVITY_TYPE_VAL] [nvarchar](30) NULL,
+	[PROD_IMPORTANCE] [nvarchar](30) NULL,
+	[X_SIS_CONTRACT_FLG] [nchar](1) NULL,
+	[RTLAUDIT_PREV_WID] [numeric](10, 0) NULL DEFAULT ((0)),
+	[ATTRIB_02] [numeric](22, 7) NULL,
+	[X_PMP_FLG] [nvarchar](1) NULL
+) ON [PRIMARY]
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_RTLAUDIT_ML_M_TREND_A_SK]') AND name = N'[CCSI-dbo-WC_RTLAUDIT_ML_M_TREND_A_SK]')
+CREATE CLUSTERED COLUMNSTORE INDEX [CCSI-dbo-WC_RTLAUDIT_ML_M_TREND_A_SK] ON [dbo].[WC_RTLAUDIT_ML_M_TREND_A_SK] WITH (DROP_EXISTING = OFF)
+GO 
+
+---------------------------------- END CREATE TABLE [dbo].[WC_RTLAUDIT_ML_M_TREND_A_SK] -----------------------------
+
+----------- BEGIN CREATE TABLE [WC_RTLAUDIT_ML_M_TREND_A_SK]--------------------------
+
+PRINT 'CREATE TABLE [WC_RTLAUDIT_ML_M_TREND_A_SK]'
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[WC_RTLAUDIT_ML_M_TREND_A_SK]'))
+DROP TABLE [dbo].[WC_RTLAUDIT_ML_M_TREND_A_SK]
+GO 
+
+CREATE TABLE [dbo].[WC_RTLAUDIT_ML_M_TREND_A_SK](
+	[ROW_WID] [numeric](10, 0) NOT NULL,
+	[MONTH_WID] [numeric](10, 0) NULL CONSTRAINT [DF_WC_RTLAUDIT_ML_M_TREND_A_SK_MONTH_WID]  DEFAULT ((0)),
+	[ACCNT_WID] [numeric](10, 0) NULL CONSTRAINT [DF_WC_RTLAUDIT_ML_M_TREND_A_SK_ACCNT_WID]  DEFAULT ((0)),
+	[INVLOC_WID] [numeric](10, 0) NULL CONSTRAINT [DF_WC_RTLAUDIT_ML_M_TREND_A_SK_INVLOC_WID]  DEFAULT ((0)),
+	[ACTIVITY_TYPE] [numeric](10, 0) NULL CONSTRAINT [DF_WC_RTLAUDIT_ML_M_TREND_A_SK_ACTIVITY_TYPE]  DEFAULT ((0)),
+	[OWNER_POSTN_WID] [numeric](10, 0) NULL CONSTRAINT [DF_WC_RTLAUDIT_ML_M_TREND_A_SK_OWNER_POSTN_WID]  DEFAULT ((0)),
+	[EMP_WID] [numeric](10, 0) NULL CONSTRAINT [DF_WC_RTLAUDIT_ML_M_TREND_A_SK_EMP_WID]  DEFAULT ((0)),
+	[BU_ID] [nvarchar](30) NOT NULL,
+	[INVLOV_SLOTS_NUM] [numeric](10, 0) NULL,
+	[INVLOC_FACINGS_NUM] [numeric](10, 0) NULL,
+	[ATTRIB_117] [numeric](22, 7) NULL,
+	[ATTRIB_121] [numeric](10, 0) NULL,
+	[BASE_ENTRY_FLG] [nvarchar](3) NULL
+) ON [PRIMARY]
+
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
+
+GO
+
+
+------------------------- END CREATE TABLE [WC_RTLAUDIT_ML_M_TREND_A_SK] --------------------------
+----------- BEGIN CREATE TABLE [dbo].[WC_ASSORTMENT_SCD_SK]--------------------------
+
+PRINT 'CREATE TABLE [dbo].[WC_ASSORTMENT_SCD_SK]'
+GO
+
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[WC_ASSORTMENT_SCD_SK]'))
+DROP TABLE [dbo].[WC_ASSORTMENT_SCD_SK]
+GO 
+
+CREATE TABLE [dbo].[WC_ASSORTMENT_SCD_SK](
+	[ROW_WID] [numeric](10, 0) NOT NULL,
+	[ETL_PROC_WID] [numeric](10, 0) NULL,
+	[INTEGRATION_ID] [nvarchar](30) NULL,
+	[DATASOURCE_NUM_ID] [numeric](10, 0) NULL,
+	[SCD_START_DT_WID] [numeric](10, 0) NOT NULL,
+	[SCD_END_DT_WID] [numeric](10, 0) NULL,
+	[NAME] [nvarchar](50) NULL,
+	[ACCOUNT_WID] [numeric](10, 0) NULL,
+	[PRODUCT_WID] [numeric](10, 0) NULL,
+	[TYPE_CD] [nvarchar](30) NULL,
+	[TYPE_CD_I] [nvarchar](50) NULL,
+	[LOC_TYPE_CD] [nvarchar](30) NULL,
+	[LOC_TYPE_CD_I] [nvarchar](50) NULL,
+	[LOC_SUBTYPE_CD] [nvarchar](30) NULL,
+	[LOC_SUBTYPE_CD_I] [nvarchar](50) NULL,
+	[BU_ID] [nvarchar](15) NOT NULL,
+	[ASSORTMENT_START_DT] [datetime] NULL,
+	[ASSORTMENT_END_DT] [datetime] NULL,
+	[ASSORTMENT_ID] [nvarchar](30) NULL,
+	[PERIOD_NAME] [nvarchar](50) NULL,
+	[ORG_NAME] [nvarchar](100) NULL,
+	[CTLG_NAME] [nvarchar](75) NULL,
+ CONSTRAINT [WC_ASSORTMENT_SCD_SK_PK] PRIMARY KEY CLUSTERED 
+(
+	[ROW_WID] ASC,
+	[SCD_START_DT_WID] ASC,
+	[BU_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95) ON [PRIMARY]
+) ON [PRIMARY]
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_ASSORTMENT_SCD_SK]') AND name = N'[WC_ASSORTMENT_SCD_SK_U1]')
+CREATE NONCLUSTERED INDEX [WC_ASSORTMENT_SCD_SK_U1] ON [dbo].[WC_ASSORTMENT_SCD_SK]
+(
+	[ASSORTMENT_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_ASSORTMENT_SCD_SK]') AND name = N'[WC_ASSORTMENT_SCD_SK_U2]')
+CREATE NONCLUSTERED INDEX [WC_ASSORTMENT_SCD_SK_U2] ON [dbo].[WC_ASSORTMENT_SCD_SK]
+(
+	[BU_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_ASSORTMENT_SCD_SK]') AND name = N'[WC_ASSORTMENT_SCD_SK_U3]')
+CREATE NONCLUSTERED INDEX [WC_ASSORTMENT_SCD_SK_U3] ON [dbo].[WC_ASSORTMENT_SCD_SK]
+(
+	[NAME] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_ASSORTMENT_SCD_SK]') AND name = N'[WC_ASSORTMENT_SCD_SK_U4]')
+CREATE NONCLUSTERED INDEX [WC_ASSORTMENT_SCD_SK_U4] ON [dbo].[WC_ASSORTMENT_SCD_SK]
+(
+	[ACCOUNT_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_ASSORTMENT_SCD_SK]') AND name = N'[WC_ASSORTMENT_SCD_SK_U5]')
+CREATE NONCLUSTERED INDEX [WC_ASSORTMENT_SCD_SK_U5] ON [dbo].[WC_ASSORTMENT_SCD_SK]
+(
+	[PRODUCT_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_ASSORTMENT_SCD_SK]') AND name = N'[WC_ASSORTMENT_SCD_SK_U6]')
+CREATE NONCLUSTERED INDEX [WC_ASSORTMENT_SCD_SK_U6] ON [dbo].[WC_ASSORTMENT_SCD_SK]
+(
+	[ROW_WID] ASC,
+	[SCD_START_DT_WID] ASC,
+	[SCD_END_DT_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_ASSORTMENT_SCD_SK]') AND name = N'[WC_ASSORTMENT_SCD_SK_U7]')
+CREATE NONCLUSTERED INDEX [WC_ASSORTMENT_SCD_SK_U7] ON [dbo].[WC_ASSORTMENT_SCD_SK]
+(
+	[ROW_WID] ASC
+)
+INCLUDE ( 	[SCD_START_DT_WID],
+	[SCD_END_DT_WID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_ASSORTMENT_SCD_SK]') AND name = N'[WC_ASSORTMENT_SCD_SK_U8]')
+CREATE NONCLUSTERED INDEX [WC_ASSORTMENT_SCD_SK_U8] ON [dbo].[WC_ASSORTMENT_SCD_SK]
+(
+	[ROW_WID] ASC,
+	[BU_ID] ASC,
+	[SCD_START_DT_WID] ASC,
+	[SCD_END_DT_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+ALTER TABLE [dbo].[WC_ASSORTMENT_SCD_SK]  WITH CHECK ADD  CONSTRAINT [WC_ASSORTMENT_SCD_SK_BU_ID] CHECK  (([BU_ID]='1-7Q8NB3'))
+GO
+
+ALTER TABLE [dbo].[WC_ASSORTMENT_SCD_SK] CHECK CONSTRAINT [WC_ASSORTMENT_SCD_SK_BU_ID]
+GO
+
+------------------------- END CREATE TABLE [dbo].[WC_ASSORTMENT_SCD_SK] --------------------------
+
+
+----------- BEGIN CREATE TABLE [WC_DAY_D_SK]--------------------------
+
+PRINT 'CREATE TABLE [WC_DAY_D_SK]'
+GO
+
+IF  EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]'))
+DROP TABLE [dbo].[WC_DAY_D_SK]
+GO 
+
+CREATE TABLE [dbo].[WC_DAY_D_SK](
+	[ROW_WID] [numeric](10, 0) NULL,
+	[CALENDAR_DATE] [datetime] NULL,
+	[CAL_HALF] [numeric](2, 0) NULL,
+	[CAL_MONTH] [numeric](2, 0) NULL,
+	[CAL_TRIMESTER] [numeric](10, 0) NULL,
+	[CAL_WEEK] [numeric](2, 0) NULL,
+	[CAL_YEAR] [numeric](4, 0) NULL,
+	[DAY_DT] [datetime] NULL,
+	[DAY_OF_MONTH] [numeric](2, 0) NULL,
+	[DAY_OF_WEEK] [numeric](1, 0) NULL,
+	[DAY_OF_YEAR] [numeric](3, 0) NULL,
+	[JULIAN_MONTH_NUM] [numeric](10, 0) NULL,
+	[MONTH_AGO_WID] [numeric](10, 0) NULL,
+	[PERIOD_KEY] [numeric](10, 0) NULL,
+	[QUARTER_AGO_WID] [numeric](10, 0) NULL,
+	[WEEK_AGO_WID] [numeric](10, 0) NULL,
+	[YEAR_AGO_WID] [numeric](10, 0) NULL,
+	[DAY_NAME] [nvarchar](30) NULL,
+	[MONTH_NAME] [nvarchar](30) NULL,
+	[PER_NAME_FSCL_MNTH] [nvarchar](50) NULL,
+	[PER_NAME_FSCL_QTR] [nvarchar](50) NULL,
+	[PER_NAME_FSCL_WEEK] [nvarchar](50) NULL,
+	[PER_NAME_FSCL_YEAR] [nvarchar](50) NULL,
+	[PER_NAME_HALF] [nvarchar](50) NULL,
+	[PER_NAME_MONTH] [nvarchar](50) NULL,
+	[PER_NAME_QTR] [nvarchar](50) NULL,
+	[PER_NAME_TER] [nvarchar](50) NULL,
+	[PER_NAME_WEEK] [nvarchar](50) NULL,
+	[CAL_DAY_OF_WEEK] [numeric](1, 0) NULL,
+	[RECAL_WEEK] [numeric](2, 0) NULL,
+	[CAL_PER_NAME_WEEK] [nvarchar](50) NULL,
+	[RECAL_WEEK_YEAR] [nvarchar](50) NULL,
+	[ISO_WEEK_DATE] [nvarchar](50) NULL,
+	[FIRST_DAY_YR_WID] [numeric](10, 0) NULL,
+	[FIRST_DAY_YAGO_WID] [numeric](10, 0) NULL,
+	[FIRST_DAY_MTH_WID] [numeric](10, 0) NULL,
+	[FIRST_DAY_MTH_YAGO_WID] [numeric](10, 0) NULL,
+	[FIRST_DAY_WEEK_WID] [numeric](10, 0) NULL,
+	[LAST_DAY_WEEK_FLG] [nvarchar](1) NULL,
+	[LAST_DAY_MTH_FLG] [nvarchar](1) NULL,
+	[FST_WEEKDAY_YAGO_WID] [numeric](10, 0) NULL,
+	[WEEKDAY_YAGO_WID] [numeric](10, 0) NULL,
+	[BI_MONTH] [nvarchar](2) NULL,
+	[BI_MONTH_YR] [nvarchar](7) NULL,
+	[DSD_WEEK] [nvarchar](30) NULL,
+	[DAY_WEIGHT] [numeric](22, 7) NULL,
+	[DAY_WEIGHT_YAGO] [numeric](22, 7) NULL,
+	[CUSTOM_CYCLE_1] [nvarchar](30) NULL,
+	[CUSTOM_CYCLE_2] [nvarchar](30) NULL,
+	[CUSTOM_CYCLE_3] [nvarchar](30) NULL,
+	[CUSTOM_CYCLE_4] [nvarchar](30) NULL,
+	[CUSTOM_CYCLE_5] [nvarchar](30) NULL,
+	[BU_ID] [nvarchar](15) NULL,
+	[COUNTRY_CODE] [nvarchar](2) NULL,
+	[FIRST_DAY_MTH_FLG] [nvarchar](1) NULL,
+	[FIRST_DAY_WEEK_FLG] [nvarchar](1) NULL,
+	[TOTAL_MONTH_SELL_DAYS] [numeric](10, 0) NULL,
+	[TOTAL_MONTH_SELL_DAYS_YAGO] [numeric](22, 10) NULL,
+	[MONTH_WEIGHT] [numeric](22, 7) NULL,
+	[MONTH_WEIGHT_YAGO] [numeric](22, 7) NULL,
+	[MONTH_SELL_DAYS] [numeric](22, 10) NULL,
+	[MONTH_SELL_DAYS_YAGO] [numeric](22, 10) NULL,
+	[DAY_NAME_LOCALIZED] [nvarchar](30) NULL,
+	[MONTH_NAME_LOCALIZED] [nvarchar](30) NULL,
+	[TOTAL_MONTH_SELL_DAYS_MAGO] [numeric](10, 0) NULL,
+	[MONTH_SELL_DAYS_MAGO] [numeric](10, 0) NULL,
+	[MONTH_WEIGHT_MAGO] [numeric](10, 0) NULL,
+	[DTW_CALENDAR_DATE]  AS (CONVERT([date],[CALENDAR_DATE])) PERSISTED
+) ON [PRIMARY]
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_F2]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_F2] ON [dbo].[WC_DAY_D_SK]
+(
+	[WEEK_AGO_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_F7]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_F7] ON [dbo].[WC_DAY_D_SK]
+(
+	[YEAR_AGO_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_Govn_Perf_idx1]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_Govn_Perf_idx1] ON [dbo].[WC_DAY_D_SK]
+(
+	[PER_NAME_MONTH] ASC,
+	[ISO_WEEK_DATE] ASC
+)
+INCLUDE ( 	[ROW_WID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_Govn_Perf_idx2]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_Govn_Perf_idx2] ON [dbo].[WC_DAY_D_SK]
+(
+	[CAL_YEAR] ASC,
+	[PER_NAME_WEEK] ASC,
+	[CAL_WEEK] ASC,
+	[CALENDAR_DATE] ASC
+)
+INCLUDE ( 	[ROW_WID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_Govn_Perf_idx3]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_Govn_Perf_idx3] ON [dbo].[WC_DAY_D_SK]
+(
+	[CAL_YEAR] ASC,
+	[CAL_MONTH] ASC,
+	[CALENDAR_DATE] ASC
+)
+INCLUDE ( 	[ROW_WID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M1]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M1] ON [dbo].[WC_DAY_D_SK]
+(
+	[CAL_WEEK] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M16]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M16] ON [dbo].[WC_DAY_D_SK]
+(
+	[PER_NAME_WEEK] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M17]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M17] ON [dbo].[WC_DAY_D_SK]
+(
+	[PER_NAME_MONTH] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M18]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M18] ON [dbo].[WC_DAY_D_SK]
+(
+	[PER_NAME_QTR] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M2]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M2] ON [dbo].[WC_DAY_D_SK]
+(
+	[CAL_MONTH] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M23]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M23] ON [dbo].[WC_DAY_D_SK]
+(
+	[JULIAN_MONTH_NUM] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M39]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M39] ON [dbo].[WC_DAY_D_SK]
+(
+	[DAY_DT] DESC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M5]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M5] ON [dbo].[WC_DAY_D_SK]
+(
+	[CAL_YEAR] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M6]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M6] ON [dbo].[WC_DAY_D_SK]
+(
+	[DAY_OF_WEEK] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_M9]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_M9] ON [dbo].[WC_DAY_D_SK]
+(
+	[DAY_NAME] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_MS_Recommended_20080410183428_5493]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_MS_Recommended_20080410183428_5493] ON [dbo].[WC_DAY_D_SK]
+(
+	[CALENDAR_DATE] ASC,
+	[CAL_YEAR] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_P1]')
+CREATE UNIQUE CLUSTERED INDEX [WC_DAY_D_SK_P1] ON [dbo].[WC_DAY_D_SK]
+(
+	[ROW_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_PERF_IDX_2_12_1]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_PERF_IDX_2_12_1] ON [dbo].[WC_DAY_D_SK]
+(
+	[CALENDAR_DATE] ASC,
+	[CAL_MONTH] ASC,
+	[ROW_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_PERF_IDX_2_16_1]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_PERF_IDX_2_16_1] ON [dbo].[WC_DAY_D_SK]
+(
+	[ROW_WID] ASC,
+	[CALENDAR_DATE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_PERF_IDX_2_49_1]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_PERF_IDX_2_49_1] ON [dbo].[WC_DAY_D_SK]
+(
+	[MONTH_NAME] ASC,
+	[ROW_WID] ASC,
+	[PER_NAME_MONTH] ASC,
+	[YEAR_AGO_WID] ASC,
+	[CALENDAR_DATE] ASC
+)
+INCLUDE ( 	[CAL_MONTH]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_PERF_IDX_2_6_1]')
+CREATE NONCLUSTERED INDEX [WC_DAY_D_SK_PERF_IDX_2_6_1] ON [dbo].[WC_DAY_D_SK]
+(
+	[MONTH_NAME] ASC,
+	[ROW_WID] ASC,
+	[CAL_MONTH] ASC,
+	[PER_NAME_MONTH] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_WC_DAY_DHL_U1]')
+CREATE UNIQUE NONCLUSTERED INDEX [WC_DAY_D_SK_WC_DAY_DHL_U1] ON [dbo].[WC_DAY_D_SK]
+(
+	[BU_ID] ASC,
+	[ROW_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[WC_DAY_D_SK]') AND name = N'[WC_DAY_D_SK_WC_DAY_DHL_U2]')
+CREATE UNIQUE NONCLUSTERED INDEX [WC_DAY_D_SK_WC_DAY_DHL_U2] ON [dbo].[WC_DAY_D_SK]
+(
+	[COUNTRY_CODE] ASC,
+	[ROW_WID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 95)
+
+GO
+
+------------------------- END CREATE TABLE [WC_DAY_D_SK] --------------------------
+

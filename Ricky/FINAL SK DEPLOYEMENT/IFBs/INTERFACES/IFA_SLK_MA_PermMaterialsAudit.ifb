@@ -1,0 +1,116 @@
+ ; .ifb file according to TMEI-DVT-HDL Input File Definitions Permanent Materials Audit (MA).doc 
+
+[Siebel Interface Manager]
+       	LOG TRANSACTIONS = TRUE
+	SET BASED LOGGING = TRUE
+	LOG TRANSACTIONS TO FILE = TRUE
+        PROCESS = IMPORT ALL
+
+[IMPORT ALL]
+	 TYPE = SHELL
+	 INCLUDE = "UPDATE PRODUCT"
+	 INCLUDE = "UPDATE ACTIVITY_UID"
+	 INCLUDE = "NULLIFY COMMENTS"
+	 INCLUDE = "NULLIFY STEP_COMMENTS"
+	 INCLUDE = "Import EIM_ACTIVITY"
+	 INCLUDE = "Import EIM_ACTIVITY2"
+                   INCLUDE = "Import EIM_ACTIVITY1"
+                   INCLUDE = "Import EIM_FN_ACT"
+
+
+;-------------------------------------------------------------------------------------------------------------------------------------------
+; Look up the PRODUCT from the base table into the EIM table
+
+[UPDATE PRODUCT]
+	SESSION SQL = "UPDATE F1 SET F1.PROD_PROD_NAME = F3.NAME, F1.PROD_PROD_VEN_NAME = F4.NAME, F1.PROD_PROD_VEN_BU = F5.NAME FROM EIM_ACTIVITY2 F1 INNER JOIN S_BU F2 ON F2.NAME = F1.PROD_PROD_BU INNER JOIN S_PROD_INT F3 ON F3.PART_NUM = F1.PROD_PROD_NAME LEFT OUTER JOIN S_ORG_EXT F4 ON F4.ROW_ID = F3.VENDR_OU_ID LEFT OUTER JOIN S_BU F5 ON F5.ROW_ID = F4.BU_ID WHERE F1.IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999"
+	TYPE = IMPORT
+	BATCH NUMBER = 546456;dummy
+	TABLE = EIM_ACTIVITY2
+
+;-------------------------------------------------------------------------------------------------------------------------------------------
+; Assigns audited products to appropriate activity
+
+[UPDATE ACTIVITY_UID]
+	SESSION SQL = "UPDATE F1 SET F1.ACT_ACTIVITY_UID = F2.ACT_ACTIVITY_UID FROM EIM_ACTIVITY2 F1 INNER JOIN EIM_FN_ACT F2 ON F2.ACT_COMMENTS = F1.STEP_COMMENTS WHERE F1.IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999"
+	TYPE = IMPORT
+	BATCH NUMBER = 456756;dummy
+	TABLE = EIM_ACTIVITY2
+
+;-------------------------------------------------------------------------------------------------------------------------------------------
+; Nullify fields used to temporarily store data to uniquely identify activities
+
+[NULLIFY COMMENTS]
+	SESSION SQL = "UPDATE EIM_FN_ACT SET ACT_COMMENTS = NULL WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999"
+	TYPE = IMPORT
+	BATCH NUMBER = 54654654;dummy
+	TABLE = EIM_ACTIVITY
+
+
+[NULLIFY STEP_COMMENTS]
+	SESSION SQL = "UPDATE EIM_ACTIVITY2 SET STEP_COMMENTS = NULL WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999"
+	TYPE = IMPORT
+	BATCH NUMBER = 456546546;dummy
+	TABLE = EIM_ACTIVITY2
+
+;-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[Import EIM_ACTIVITY]
+ 
+ 	TYPE = IMPORT
+	;<REQUEST Import EIM_ACTIVITY>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_ACTIVITY (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+	;<BATCH Import EIM_ACTIVITY>
+		BATCH = 34000-34999
+	;</BATCH>        
+        ;*** Specify source table ***
+        TABLE = EIM_ACTIVITY
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_EVT_ACT
+
+	;INSERT ROWS = S_EVT_ACT, FALSE ; to be commented
+    	;UPDATE ROWS = S_EVT_ACT, TRUE ; to be commented
+	;INSERT ROWS = S_ACT_EMP, TRUE; to be commented
+    	;UPDATE ROWS = S_ACT_EMP, TRUE ; to be commented
+
+
+[Import EIM_ACTIVITY2]
+ 
+ 	TYPE = IMPORT
+	;<REQUEST Import EIM_ACTIVITY2>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_ACTIVITY2 (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+	;<BATCH Import EIM_ACTIVITY2>
+		BATCH = 34000-34999
+	;</BATCH>
+        
+        ;*** Specify source table ***
+        TABLE = EIM_ACTIVITY2
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_EVT_ACT, S_ACT_PRDINT
+
+[Import EIM_ACTIVITY1]
+ 
+    TYPE = IMPORT
+ ;<REQUEST Import EIM_ACTIVITY1>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_ACTIVITY1 (NOLOCK)   WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+ ;<BATCH Import EIM_ACTIVITY1>
+  BATCH = 34000-34999
+ ;</BATCH>        
+        ;*** Specify source table ***
+        TABLE = EIM_ACTIVITY1
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_EVT_ACT, S_ACT_EMP
+
+[Import EIM_FN_ACT]
+ 
+  TYPE = IMPORT
+ ;<REQUEST Import EIM_FN_ACT>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_FN_ACT (NOLOCK)   WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+ ;<BATCH Import EIM_FN_ACT>
+  BATCH = 34000-34999
+ ;</BATCH>
+        
+        ;*** Specify source table ***
+        TABLE = EIM_FN_ACT
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_EVT_ACT

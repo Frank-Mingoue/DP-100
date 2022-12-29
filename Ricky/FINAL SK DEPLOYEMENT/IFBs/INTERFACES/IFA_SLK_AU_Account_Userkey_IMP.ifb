@@ -1,0 +1,49 @@
+; .ifb file according to TME Phase 2 - HLFD Interface Accounts User key update v0.1 
+; [30.06.2011:JL]INC0345838 - set IF_ROW_BATCH_NUM for the denormalized column to 100000+country batch 
+
+[Siebel Interface Manager]
+	LOG TRANSACTIONS = TRUE
+	SET BASED LOGGING = TRUE
+	LOG TRANSACTIONS TO FILE = TRUE 
+        PROCESS = IMPORT ALL
+
+[IMPORT ALL]
+	 TYPE = SHELL
+	 INCLUDE = "Import EIM_ORG_EXT_UK_DENORM"
+	 INCLUDE = "Clear TEMP BATCH"
+
+
+;-------------------------------------------------------------------------------------------------------------
+[IMPORT EIM_ORG_EXT_UK_DENORM]
+	TYPE = IMPORT
+ ;<REQUEST Import EIM_ORG_EXT_UK_DENORM>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 134000) FROM EIM_ORG_EXT_UK (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 134000 AND 134999</REQUEST>
+;<BATCH Import EIM_ORG_EXT_UK_DENORM>
+       BATCH = 134000-134999
+;</BATCH>
+    	TABLE = EIM_ORG_EXT_UK
+    	ONLY BASE TABLES = S_PARTY, S_ORG_EXT, S_ACCNT_POSTN, S_ORG_BU
+    	INSERT ROWS = S_PARTY, FALSE
+    	UPDATE ROWS = S_PARTY, FALSE
+    	INSERT ROWS = S_ORG_EXT, FALSE
+    	UPDATE ROWS = S_ORG_EXT, FALSE
+    	INSERT ROWS = S_ACCNT_POSTN, FALSE
+    	INSERT ROWS = S_ORG_BU, FALSE
+	ONLY BASE COLUMNS = S_PARTY.PARTY_UID,\
+            S_PARTY.PARTY_TYPE_CD,\
+            S_ORG_EXT.INTEGRATION_ID,\
+            S_ORG_EXT.NAME,\
+            S_ACCNT_POSTN.OU_EXT_ID,\
+            S_ACCNT_POSTN.POSITION_ID,\
+            S_ORG_BU.ORG_ID,\
+            S_ORG_BU.BU_ID
+
+;-----------------------------------------------------------------------------------------------------------------
+;Clearing the temporary batch that has been inserted for the Denormalised field
+
+[Clear TEMP BATCH]
+	SESSION SQL = "DELETE FROM EIM_ORG_EXT_UK WHERE IF_ROW_BATCH_NUM BETWEEN 134000 AND 134999"
+
+	TYPE = IMPORT
+	BATCH NUMBER = 12345678;dummy
+	TABLE = EIM_ORG_EXT_UK; ROLLBACK ON ERROR = TRUE
+;------------------------------------------------------------------------------------------------------------------

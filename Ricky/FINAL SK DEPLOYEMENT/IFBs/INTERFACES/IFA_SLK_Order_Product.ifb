@@ -1,0 +1,101 @@
+;Number	       : CHG0006612
+;Author        : Robert Grenade
+;Modified by   : Rhishna 
+;Created On    : 14/09/2010 
+;Last modified : 23/07/2015
+;Version       : 2.0
+;Description: Added New Required field OVRD_REPRICE_FLG as per SIP14 upgrade
+
+[Siebel Interface Manager]
+	LOG TRANSACTIONS = TRUE
+	SET BASED LOGGING = TRUE
+	LOG TRANSACTIONS TO FILE = TRUE
+    	PROCESS   = Import ALL
+   
+[Import ALL]  
+		TYPE = SHELL
+		INCLUDE = "Import Template Header"
+		INCLUDE = "Import Template Product"
+		INCLUDE = "Import Template User"
+
+[Import Template Header]
+
+		TYPE = IMPORT
+;<REQUEST Import Template Header>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_QUOTE (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import Template Header>
+      BATCH =34000-34999
+;</BATCH> 	
+
+	  TABLE = EIM_QUOTE
+	  ONLY BASE TABLES = S_DOC_QUOTE
+
+	  INSERT ROWS= S_DOC_QUOTE, TRUE
+	  UPDATE ROWS= S_DOC_QUOTE, TRUE
+	  
+	  ONLY BASE COLUMNS = S_DOC_QUOTE.QUOTE_NUM,\
+			      S_DOC_QUOTE.NAME,\
+			      S_DOC_QUOTE.REV_NUM,\
+			      S_DOC_QUOTE.BU_ID,\
+			      S_DOC_QUOTE.DESC_TEXT,\
+			      S_DOC_QUOTE.EFF_START_DT,\
+			      S_DOC_QUOTE.EFF_END_DT,\
+			      S_DOC_QUOTE.X_ATTRIB_01,\
+			      S_DOC_QUOTE.QUOTE_TYPE,\
+			      S_DOC_QUOTE.ACTIVE_CFG_FLG,\
+                              S_DOC_QUOTE.CRDT_CHK_PASSD_FLG,\
+                              S_DOC_QUOTE.OPEN_ORDER_FLG
+
+						
+[Import Template Product]
+
+		TYPE = IMPORT
+;<REQUEST Import Template Product>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_QUOTE_IT (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import Template Product>
+      BATCH =34000-34999
+;</BATCH> 	
+
+	  TABLE = EIM_QUOTE_IT
+	  ONLY BASE TABLES = S_QUOTE_ITEM
+
+	;  FIXED COLUMN = IT_ALWPARTSHIP_FLG, "Y"
+        ;  FIXED COLUMN = IT_DISCNT_SRC_CD, "Manual"
+        ;  FIXED COLUMN = IT_EXCLPRICING_FLG, "N"
+        ;  FIXED COLUMN = FCST_FLG, "Y"
+        ;  FIXED COLUMN = LATE_FLG, "N"
+        ;  FIXED COLUMN = IT_PROMO_ITEM_FLG, "N"
+	;  FIXED COLUMN = SINGLE_SRC_FLG, "N"
+        ;  FIXED COLUMN = IT_TIER_PRI_FLG, "N"
+
+	  INSERT ROWS= S_QUOTE_ITEM, TRUE
+	  UPDATE ROWS= S_QUOTE_ITEM, TRUE
+	  
+	  ONLY BASE COLUMNS = S_QUOTE_ITEM.SD_ID,\
+						  S_QUOTE_ITEM.LN_NUM,\
+						  S_QUOTE_ITEM.PROD_ID,\
+						  S_QUOTE_ITEM.X_JTI_SEQ_NUM,\
+						  S_QUOTE_ITEM.X_TEMPLATE_CODE,\
+						  S_QUOTE_ITEM.ROOT_QUOTE_ITEM_ID,\
+						  S_QUOTE_ITEM.OVRD_REPRICE_FLG
+
+						  
+[Import Template User]
+
+		TYPE = IMPORT
+;<REQUEST Import Template User>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_QUOTE1 (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import Template User>
+      BATCH =34000-34999
+;</BATCH> 	
+	  TABLE = EIM_QUOTE1
+	  ONLY BASE TABLES = S_DOC_QUOTE,S_EMP_DOC
+
+	  INSERT ROWS= S_DOC_QUOTE, FALSE
+	  INSERT ROWS= S_EMP_DOC, TRUE
+	  
+	  UPDATE ROWS= S_DOC_QUOTE, FALSE
+	  UPDATE ROWS= S_EMP_DOC, TRUE
+	  
+	  ONLY BASE COLUMNS =   S_DOC_QUOTE.QUOTE_NUM,\
+							S_DOC_QUOTE.REV_NUM,\
+							S_DOC_QUOTE.BU_ID,\
+							S_EMP_DOC.SD_ID,\
+							S_EMP_DOC.PER_ID

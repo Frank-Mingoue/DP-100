@@ -1,0 +1,58 @@
+﻿
+------------
+<html><body>
+
+
+----------------
+<table border=1>
+
+                                                                                                                      
+---------------- ---------------------------------------------------------------------------------------------------- -----------------------
+<tr><td> <b><h3> EIM_CX_BANKINFO                                                                                      </h3></b></td><td></tr>
+
+                                                                            
+----------------------------------------- ----------- ---- ----------- ---- -----------
+<tr><td> <b>Sheet Generated on: </td><td> 11          /    3           /    2022
+
+
+--------------
+</b></td></tr>
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+<TR>
+		<TD><b>Destination Table</b></TD>
+		<TD><b>Destination Column</b></TD>
+		<TD><b>UK</b></TD>
+		<TD><b>Req</b></TD>
+		<TD><b>DType</b></TD>
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+		<TD><b>DValue</b></TD>
+		<TD><b>Destination Description</b></TD>
+		<TD><b>Source Column</b></TD>
+		<TD><b>Data Type</b></TD>
+		<TD><b>Len</b></TD>
+		<TD><b>PC Intersect Table</b></TD>
+		</TR>
+
+         Destination Table                          Destination Column                        UK                    Req             DType            DValue                                    Destination Description                                  Source Column                             Data Type            Len                                                </td></tr>
+-------- ------------------------------- ----- ---- ------------------------------ ----- ---- ---------- ----- ---- ---- ----- ---- ----- ----- ---- ------------------------------ ----- ---- --------------------------------------------- ----- ---- ------------------------------ ----- ---- --------- ----- ---- --------------------------------------- ----- ---- ------------------------------
+<tr><td> *CX_BANK_INFO                   </td> <td> X_ACCNT_ID                     </td> <td>          1 </td> <td> N    </td> <td> FK    </td> <td> S_ORG_EXT                      </td> <td> X_ACCNT_ID                                    </td> <td> X_ACCNT_BI                     </td> <td> Varchar   </td> <td> 15                                      </td> <td> NULL
+<tr><td> *CX_BANK_INFO                   </td> <td> X_ACCNT_ID                     </td> <td>          1 </td> <td> N    </td> <td> FK    </td> <td> S_ORG_EXT                      </td> <td> X_ACCNT_ID                                    </td> <td> X_ACCNT_LOC                    </td> <td> Varchar   </td> <td> 50                                      </td> <td> NULL
+<tr><td> *CX_BANK_INFO                   </td> <td> X_ACCNT_ID                     </td> <td>          1 </td> <td> N    </td> <td> FK    </td> <td> S_ORG_EXT                      </td> <td> X_ACCNT_ID                                    </td> <td> X_ACCNT_NAME                   </td> <td> Varchar   </td> <td> 100                                     </td> <td> NULL
+<tr><td> *CX_BANK_INFO                   </td> <td> X_SEQ_NUM                      </td> <td>          2 </td> <td> N    </td> <td> .     </td> <td> .                              </td> <td> X_SEQ_NUM                                     </td> <td> X_SEQ_NUM                      </td> <td> Number    </td> <td> 22                                      </td> <td> NULL
+<tr><td> *CX_BANK_INFO                   </td> <td> X_ACCNTNUM_ENCRPKEY_REF        </td> <td>            </td> <td> N    </td> <td> .     </td> <td> .                              </td> <td> X_ACCNTNUM_ENCRPKEY_REF                       </td> <td> XACCNTNUMENCRPKEYR             </td> <td> Varchar   </td> <td> 30                                      </td> <td> NULL
+<tr><td> *CX_BANK_INFO                   </td> <td> X_ACCNT_TAX_ID                 </td> <td>            </td> <td> N    </td> <td> .     </td> <td> .                              </td> <td> X_ACCNT_TAX_ID                                </td> <td> X_ACCNT_TAX_ID                 </td> <td> Varchar   </td> <td> 15                                      </td> <td> NULL
+<tr><td> *CX_BANK_INFO                   </td> <td> X_ACCOUNT_NUM                  </td> <td>            </td> <td> N    </td> <td> .     </td> <td> .                              </td> <td> X_ACCOUNT_NUM                                 </td> <td> X_ACCOUNT_NUM                  </td> <td> Varchar   </td> <td> 50                                      </td> <td> NULL
+<tr><td> *CX_BANK_INFO                   </td> <td> X_IBAN_TEXT                    </td> <td>            </td> <td> N    </td> <td> .     </td> <td> .                              </td> <td> X_IBAN_TEXT                                   </td> <td> X_IBAN_TEXT                    </td> <td> Varchar   </td> <td> 50                                      </td> <td> NULL
+<tr><td> *CX_BANK_INFO                   </td> <td> X_TO_ACCNT_NUM                 </td> <td>            </td> <td> N    </td> <td> .     </td> <td> .                              </td> <td> X_TO_ACCNT_NUM                                </td> <td> X_TO_ACCNT_NUM                 </td> <td> Varchar   </td> <td> 50                                      </td> <td> NULL
+
+
+----------------------
+</table></body></html>
+
+
+Completion time: 2022-03-11T10:57:19.1325000+04:00

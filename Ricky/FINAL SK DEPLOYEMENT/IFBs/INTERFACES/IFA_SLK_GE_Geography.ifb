@@ -1,0 +1,74 @@
+[Siebel Interface Manager]
+
+       	LOG TRANSACTIONS = TRUE
+	SET BASED LOGGING = TRUE
+	LOG TRANSACTIONS TO FILE = TRUE      
+      	PROCESS = Import All
+
+
+[Import All]
+	
+	TYPE = SHELL
+	
+	INCLUDE = "Update REGN_X_BI"
+	INCLUDE = "Import GEO_ALL"
+
+;----------------------------------------------------------------------------------------------------------------------------
+; Updates REGN_X_BI with its corresponding value since it is not automatically done (Extended column)
+
+[Update REGN_X_BI]
+
+	SESSION SQL = "UPDATE T1 SET REGN_X_BI = T2.ROW_ID FROM EIM_REGION T1 INNER JOIN S_BU T2 ON T2.NAME = T1.REGN_X_BU WHERE T1.IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999"
+
+	TYPE = IMPORT
+	BATCH = 1
+	TABLE = EIM_REGION
+
+
+;----------------------------------------------------------------------------------------------------------------------------
+
+; Import all records without building the hierarchy
+[Import GEO_ALL]
+	
+
+	TYPE = IMPORT
+	;<REQUEST Import GEO_ALL>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_REGION (NOLOCK) 		WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+	;<BATCH Import GEO_ALL>
+		BATCH = 34000-34999
+	;</BATCH>
+	TABLE = EIM_REGION
+	ONLY BASE COLUMNS = S_REGION.NAME,\
+			S_REGION.DESC_TEXT,\
+			S_REGION.X_TYPE_CD,\
+			S_REGION.PAR_ROW_ID,\
+			S_REGION.X_BU_ID,\
+			S_REGION.STATUS_CD,\
+			S_REGION.ACTIVE_FLG,\
+			S_REGION.COMMENTS,\
+			S_REGION.X_INTEGRATION_ID,\
+			S_REGION.TYPE_CD,\
+			S_REGION.X_STRATA,\
+			S_REGION.DESC_TEXT,\
+			S_REGION.X_LATITUDE,\
+			S_REGION.X_LONGITUDE,\
+			S_REGION.X_COVERAGE_CD,\
+			CX_REGION_X.PAR_ROW_ID,\
+			CX_REGION_X.X_ATTRIB_01,\
+			CX_REGION_X.X_ATTRIB_02,\
+			CX_REGION_X.X_ATTRIB_03,\
+			CX_REGION_X.X_ATTRIB_04,\
+			CX_REGION_X.X_ATTRIB_05,\
+			CX_REGION_X.X_ATTRIB_06,\
+			CX_REGION_X.X_ATTRIB_07,\
+			CX_REGION_X.X_ATTRIB_08,\
+			CX_REGION_X.X_ATTRIB_09,\
+			CX_REGION_X.X_ATTRIB_10,\
+			CX_REGION_X.X_ATTRIB_11,\
+			CX_REGION_X.X_ATTRIB_12,\
+			CX_REGION_X.X_ATTRIB_13,\
+			CX_REGION_X.X_ATTRIB_14,\
+			CX_REGION_X.X_ATTRIB_15
+
+		
+	ONLY BASE TABLES = S_REGION,  CX_REGION_X
+

@@ -1,0 +1,77 @@
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6014 : Initializing session [GENERATE_UPD_OBJECTIVE] at [Thu May 19 08:55:52 2022].
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6683 : Repository Name: [SIEBEL_DW_REP_MRUDEV]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6684 : Server Name: [SIEBEL_DW_SERVER]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6686 : Folder: [EIM_INTERFACE]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6685 : Workflow: [RUN_CAP_HU] Run Instance Name: [] Run Id: [3262454]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6992 : Opearting System Type [NT]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6101 : Mapping name: DUMMY_BATCH.
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6963 : Pre 85 Timestamp Compatibility is Enabled
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6964 : Date format for the Session is [MM/DD/YYYY HH24:MI:SS.MS]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6827 : [E:\Informatica_IP14\infa_shared_IP14\Storage] will be used as storage directory for session [GENERATE_UPD_OBJECTIVE].
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : CMN_1805 : Recovery cache will be deleted when running in normal mode.
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : CMN_1802 : Session recovery cache initialization is complete.
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6708 : Using configuration property [EnableDataEncryption,no]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6708 : Using configuration property [StoreHAPersistenceInDB,no]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6708 : Using configuration property [AggSupprtWithNoPartLic,Yes]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6708 : Using configuration property [ContinueWorkflowAfterTaskStopped,Yes]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6708 : Using configuration property [OptimizeODBCRead,No]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6703 : Session [GENERATE_UPD_OBJECTIVE] is run by 64-bit Integration Service  [INFA_NODE_DEV], version [10.4.0], build [1116].
+2022-05-19 08:55:52 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24091 : Thread [MANAGER] has the ID [1].
+2022-05-19 08:55:52 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24058 : Running Partition Group [1].
+2022-05-19 08:55:52 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24000 : Parallel Pipeline Engine initializing.
+2022-05-19 08:55:52 : INFO : (3276 | MONITOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24091 : Thread [MONITOR] has the ID [2].
+2022-05-19 08:55:52 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24001 : Parallel Pipeline Engine running.
+2022-05-19 08:55:52 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24003 : Initializing session run.
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24091 : Thread [MAPPING] has the ID [3].
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : CMN_1569 : Server Mode: [UNICODE]
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : CMN_1570 : Server Code page: [MS Windows Latin 1 (ANSI), superset of Latin1]
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6151 : The session sort order is [Binary].
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6156 : Using low precision processing.
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6179 : Deadlock retry logic will be implemented.
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6187 : Session target-based commit interval is [10000].
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6307 : DTM error log disabled. 
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TE_7022 : TShmWriter: Initialized
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6007 : DTM initialized successfully for session [GENERATE_UPD_OBJECTIVE]
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24033 : All DTM Connection Info: [<NONE>].
+2022-05-19 08:55:52 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24004 : PETL_24004 Starting pre-session tasks. : (Thu May 19 08:55:52 2022)
+2022-05-19 08:55:52 : INFO : (3276 | PRE-SESS) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24091 : Thread [PRE-SESS] has the ID [4].
+2022-05-19 08:55:52 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24027 : PETL_24027 Pre-session task completed successfully. : (Thu May 19 08:55:52 2022)
+2022-05-19 08:55:52 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24006 : Starting data movement.
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6960 : Session requires [11520000] bytes of memory to run. If the session fails because of insufficient memory, disable deadlock recovery and target resilience. If the session is not configured for deadlock recovery and target resilience it requires [11264000] bytes of memory to run.
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6982 : Reserving [1] blocks for the transaction data and [44] blocks for the buffer pool.
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6660 : Total Buffer Pool size is 12582912 bytes and Block size is 256000 bytes.
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6780 : TM_6780 Starting Pre SQL for source [SQ_DUMMY_BATCH]. : (Thu May 19 08:55:52 2022)
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6272 : Executing pre-session SQL for source: EXEC sp_generate_UPD_OBJ 'Hungary, HU', 'WITH_RT'.
+
+2022-05-19 08:55:52 : ERROR : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : CMN_1022 : Database driver error...
+CMN_1022 [EXEC sp_generate_UPD_OBJ 'Hungary, HU', 'WITH_RT'
+
+FnName: Execute Direct -- [Microsoft][SQL Server Native Client 11.0][SQL Server]PROCEED, SQLSTATE [01000]
+FnName: Execute Direct -- [Microsoft][SQL Server Native Client 11.0][SQL Server]Done, SQLSTATE [01000]
+FnName: Execute Direct -- [Microsoft][SQL Server Native Client 11.0][SQL Server]Warning: The table "CAP_BCKUP_STEP10_HU_ACT_20220519" has been created, but its maximum row size exceeds the allowed maximum of 8060 bytes. INSERT or UPDATE to this table will fail if the resulting row exceeds the size limit., SQLSTATE [01000]
+FnName: Execute Direct -- [Microsoft][SQL Server Native Client 11.0][SQL Server]@CAP_TYPEWITH_RT, SQLSTATE [01000]
+FnName: Execute Direct -- [Microsoft][SQL Server Native Client 11.0][SQL Server]Cannot insert the value NULL into column 'BATCH_RUN_ID', table 'SIEBEL_OLTP_IP14.dbo.WC_LAUNCH_BATCH_RUN_DETAILS_G'; column does not allow nulls. INSERT fails., SQLSTATE [23000]
+FnName: Execute Direct -- [Microsoft][SQL Server Native Client 11.0][SQL Server]The statement has been terminated., SQLSTATE [01000]
+]
+
+2022-05-19 08:55:52 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24005 : PETL_24005 Starting post-session tasks. : (Thu May 19 08:55:52 2022)
+2022-05-19 08:55:52 : INFO : (3276 | POST-SESS) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24091 : Thread [POST-SESS] has the ID [5].
+2022-05-19 08:55:52 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24029 : PETL_24029 Post-session task completed successfully. : (Thu May 19 08:55:52 2022)
+2022-05-19 08:55:52 : INFO : (3276 | MAPPING) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6018 : The session completed with [0] row transformation errors. 
+2022-05-19 08:55:53 : INFO : (3276 | MANAGER) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24002 : Parallel Pipeline Engine finished.
+2022-05-19 08:55:53 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : PETL_24013 : Session run completed with failure.
+2022-05-19 08:55:53 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6022 : 
+
+SESSION LOAD SUMMARY
+================================================
+
+2022-05-19 08:55:53 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6252 : Source Load Summary.
+2022-05-19 08:55:53 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : CMN_1740 : Table: [SQ_DUMMY_BATCH] (Instance Name: [SQ_DUMMY_BATCH])
+	 Output Rows [0], Affected Rows [0], Applied Rows [0], Rejected Rows [0]
+2022-05-19 08:55:53 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6253 : Target Load Summary.
+2022-05-19 08:55:53 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : CMN_1740 : Table: [DUMMY_BATCH] (Instance Name: [DUMMY_BATCH1])
+	 Output Rows [0], Affected Rows [0], Applied Rows [0], Rejected Rows [0]
+2022-05-19 08:55:53 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6023 : 
+===================================================
+
+2022-05-19 08:55:53 : INFO : (3276 | DIRECTOR) : (IS | SIEBEL_DW_SERVER) : INFA_NODE_DEV : TM_6020 : Session [GENERATE_UPD_OBJECTIVE] completed at [Thu May 19 08:55:53 2022].

@@ -1,0 +1,62 @@
+﻿
+------------
+<html><body>
+
+
+----------------
+<table border=1>
+
+                                                                                                                      
+---------------- ---------------------------------------------------------------------------------------------------- -----------------------
+<tr><td> <b><h3> EIM_PROD_INT_BU                                                                                      </h3></b></td><td></tr>
+
+                                                                            
+----------------------------------------- ----------- ---- ----------- ---- -----------
+<tr><td> <b>Sheet Generated on: </td><td> 23          /    8           /    2013
+
+
+--------------
+</b></td></tr>
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+<TR>
+		<TD><b>Destination Table</b></TD>
+		<TD><b>Destination Column</b></TD>
+		<TD><b>UK</b></TD>
+		<TD><b>Req</b></TD>
+		<TD><b>DType</b></TD>
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+		<TD><b>DValue</b></TD>
+		<TD><b>Destination Description</b></TD>
+		<TD><b>Source Column</b></TD>
+		<TD><b>Data Type</b></TD>
+		<TD><b>Len</b></TD>
+		<TD><b>PC Intersect Table</b></TD>
+		</TR>
+
+         Destination Table                          Destination Column                        UK                    Req             DType            DValue                                    Destination Description                                  Source Column                             Data Type            Len                                                </td></tr>
+-------- ------------------------------- ----- ---- ------------------------------ ----- ---- ---------- ----- ---- ---- ----- ---- ----- ----- ---- ------------------------------ ----- ---- --------------------------------------------- ----- ---- ------------------------------ ----- ---- --------- ----- ---- --------------------------------------- ----- ---- ------------------------------
+<tr><td> *S_PROD_INT_BU                  </td> <td> PROD_INT_ID                    </td> <td>          1 </td> <td> Y    </td> <td> FK    </td> <td> S_PROD_INT                     </td> <td> Product (Internal) Id                         </td> <td> PROD_BI                        </td> <td> Varchar   </td> <td> 15                                      </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> PROD_INT_ID                    </td> <td>          1 </td> <td> Y    </td> <td> FK    </td> <td> S_PROD_INT                     </td> <td> Product (Internal) Id                         </td> <td> PROD_NAME                      </td> <td> Varchar   </td> <td> 100                                     </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> PROD_INT_ID                    </td> <td>          1 </td> <td> Y    </td> <td> FK    </td> <td> S_PROD_INT                     </td> <td> Product (Internal) Id                         </td> <td> PROD_VEN_BI                    </td> <td> Varchar   </td> <td> 15                                      </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> PROD_INT_ID                    </td> <td>          1 </td> <td> Y    </td> <td> FK    </td> <td> S_PROD_INT                     </td> <td> Product (Internal) Id                         </td> <td> PROD_VEN_LOC                   </td> <td> Varchar   </td> <td> 50                                      </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> PROD_INT_ID                    </td> <td>          1 </td> <td> Y    </td> <td> FK    </td> <td> S_PROD_INT                     </td> <td> Product (Internal) Id                         </td> <td> PROD_VEN_NAME                  </td> <td> Varchar   </td> <td> 100                                     </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> BU_ID                          </td> <td>          2 </td> <td> Y    </td> <td> FK    </td> <td> S_BU                           </td> <td> Business Unit Id                              </td> <td> VIS_BI                         </td> <td> Varchar   </td> <td> 15                                      </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> ACTIVE_FLG                     </td> <td>            </td> <td> Y    </td> <td> .     </td> <td> .                              </td> <td> Active Flag                                   </td> <td> ACTIVE_FLG                     </td> <td> Char      </td> <td> 1                                       </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> ORDERABLE_FLG                  </td> <td>            </td> <td> Y    </td> <td> .     </td> <td> .                              </td> <td> Orderable flag                                </td> <td> ORDERABLE_FLG                  </td> <td> Char      </td> <td> 1                                       </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> SALES_PROD_FLG                 </td> <td>            </td> <td> Y    </td> <td> .     </td> <td> .                              </td> <td> Sales Product Flag                            </td> <td> SALES_PROD_FLG                 </td> <td> Char      </td> <td> 1                                       </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> MIN_ORDER_UNITS                </td> <td>            </td> <td> N    </td> <td> .     </td> <td> .                              </td> <td> Minimum Order Units                           </td> <td> MIN_ORDER_UNITS                </td> <td> Number    </td> <td> 22                                      </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> PR_FULFL_INVLOC_ID             </td> <td>            </td> <td> N    </td> <td> FK    </td> <td> S_INVLOC                       </td> <td> Primary Fulfilment Inventory Location Id      </td> <td> FULFL_INVLOC_BI                </td> <td> Varchar   </td> <td> 15                                      </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> PR_FULFL_INVLOC_ID             </td> <td>            </td> <td> N    </td> <td> FK    </td> <td> S_INVLOC                       </td> <td> Primary Fulfilment Inventory Location Id      </td> <td> FULFL_INVLOC_NAME              </td> <td> Varchar   </td> <td> 100                                     </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> PR_PROD_LN_ID                  </td> <td>            </td> <td> N    </td> <td> FK    </td> <td> S_PROD_LN                      </td> <td> Primary Product Line ID                       </td> <td> PROD_LN_NAME                   </td> <td> Varchar   </td> <td> 100                                     </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> STATUS_CD                      </td> <td>            </td> <td> N    </td> <td> .     </td> <td> .                              </td> <td> Status code                                   </td> <td> STATUS_CD                      </td> <td> Varchar   </td> <td> 30                                      </td> <td> NULL
+<tr><td> *S_PROD_INT_BU                  </td> <td> UOM_CD                         </td> <td>            </td> <td> N    </td> <td> LOVB  </td> <td> UNIT_OF_MEASURE                </td> <td> Unit of measure                               </td> <td> UOM_CD                         </td> <td> Varchar   </td> <td> 30                                      </td> <td> NULL
+
+
+----------------------
+</table></body></html>
+

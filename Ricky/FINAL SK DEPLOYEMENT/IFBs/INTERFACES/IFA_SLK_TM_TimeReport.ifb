@@ -1,0 +1,184 @@
+; .ifb file according to TME Phase 2 - HLFD Interface Time Report Version.doc
+;-----------------------------------------------------------------------------------------------------------------------------------------
+;[20180215:JL] INC2291500 - Add section to delete orphan S_ACT_EMP
+;[20170913:JR] CHG117292  - Adding ONLY BASE COLUMNS on the each section.
+;[20170803:RM] INC2059905  - Adding ONLY BASE COLUMNS on the each section.
+;[20150714:GU] As per IP14 siebel Upgrade EIM_ACTIVITY1 added to import S_ACT_EMP data  for Header and details.
+;Author: Arnaud Grimont
+;Date Created:22/04/2011
+;-----------------------------------------------------------------------------------------------------------------------------------------
+
+[Siebel Interface Manager]
+    LOG TRANSACTIONS = TRUE
+	SET BASED LOGGING = TRUE
+	LOG TRANSACTIONS TO FILE = TRUE
+    PROCESS = IMPORT ALL
+
+[IMPORT ALL]
+	 TYPE = SHELL
+	 INCLUDE = "Import TIME_REPORT_HEADER"
+	 INCLUDE = "Import TIME_REPORT_DETAILS"
+	 INCLUDE = "Import TIME_REPORT_HEADER S_ACT_EMP"
+	 INCLUDE = "Import TIME_REPORT_DETAILS S_ACT_EMP"
+	 INCLUDE = "DEL_S_ACT_EMP"
+
+
+;-------------------------------------------------------------------------------------------------------------------------------------------
+[Import TIME_REPORT_HEADER]
+ 
+ 	TYPE = IMPORT
+;<REQUEST Import TIME_REPORT_HEADER>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 134000) FROM EIM_ACTIVITY (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 134000 AND 134999</REQUEST>
+;<BATCH Import TIME_REPORT_HEADER>
+	BATCH = 134000-134999
+;</BATCH>
+        
+        ;*** Specify source table ***
+        TABLE = EIM_ACTIVITY
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_EVT_ACT
+		
+ 	    ONLY BASE COLUMNS = S_EVT_ACT.ACTIVITY_UID,\
+							S_EVT_ACT.ACD_CALL_DURATION,\
+							S_EVT_ACT.ACD_LOG_ENTRY_DT,\
+							S_EVT_ACT.ALARM_FLAG,\
+							S_EVT_ACT.ALLOW_BREAK_FLG,\
+							S_EVT_ACT.APPT_REPT_FLG,\
+							S_EVT_ACT.BEST_ACTION_FLG,\
+							S_EVT_ACT.BILLABLE_FLG,\
+							S_EVT_ACT.CAL_DISP_FLG,\
+							S_EVT_ACT.CMPLTD_FLG,\
+							S_EVT_ACT.DO_NOT_ROUTE_FLG,\
+							S_EVT_ACT.DURATION_HRS,\
+							S_EVT_ACT.INST_ALL_OCCR_FLG,\
+							S_EVT_ACT.PAPER_SIGN_FLG,\
+							S_EVT_ACT.REQUIRED_FLG,\
+							S_EVT_ACT.SCHED_LOCKED_FLG,\
+							S_EVT_ACT.SIGN_CAPTURE_FLG,\
+							S_EVT_ACT.STATUS_RPT_FLG,\
+							S_EVT_ACT.TEMPLATE_FLG,\
+							S_EVT_ACT.TMSHT_RLTD_FLG,\
+							S_EVT_ACT.TODO_ACTL_START_DT,\
+							S_EVT_ACT.COMMENTS_LONG,\
+							S_EVT_ACT.EVT_STAT_CD,\
+							S_EVT_ACT.OWNER_LOGIN,\
+							S_EVT_ACT.ROW_STATUS,\
+							S_EVT_ACT.TODO_CD,\
+							S_EVT_ACT.ACT_CREATED_BY,\
+							S_EVT_ACT.CEM_TOTAL_TIME,\
+							S_EVT_ACT.PYMNT_FLG,\
+							S_EVT_ACT.X_NON_WORKING_FLG,\
+							S_EVT_ACT.X_SELLING_TIME_FLG,\
+							S_EVT_ACT.X_BU_ID,\
+							S_EVT_ACT.X_END_KM_NUM,\
+							S_EVT_ACT.X_END_KMS_LAST_NUM,\
+							S_EVT_ACT.X_LICENSE_PLATE_TEXT,\
+							S_EVT_ACT.X_PARKING_FEES_NUM,\
+							S_EVT_ACT.X_REAL_END_DT,\
+							S_EVT_ACT.X_RESOURCES_NUM,\
+							S_EVT_ACT.X_START_KM_NUM,\
+							S_EVT_ACT.X_START_KMS_FIRST_NUM,\
+							S_EVT_ACT.PERFRM_BY_PER_ID
+;----------------------------------------------------------------------------------------------------------------------------------------
+[Import TIME_REPORT_DETAILS]
+ 
+ 	TYPE = IMPORT
+;<REQUEST Import TIME_REPORT_DETAILS>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_ACTIVITY (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import TIME_REPORT_DETAILS>
+	BATCH = 34000-34999
+;</BATCH>
+        
+        ;*** Specify source table ***
+        TABLE = EIM_ACTIVITY
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_EVT_ACT
+
+	    ONLY BASE COLUMNS = S_EVT_ACT.ACTIVITY_UID,\
+							S_EVT_ACT.ALARM_FLAG,\
+							S_EVT_ACT.ALLOW_BREAK_FLG,\
+							S_EVT_ACT.APPT_DURATION_MIN,\
+							S_EVT_ACT.APPT_REPT_FLG,\
+							S_EVT_ACT.BEST_ACTION_FLG,\
+							S_EVT_ACT.BILLABLE_FLG,\
+							S_EVT_ACT.CAL_DISP_FLG,\
+							S_EVT_ACT.CMPLTD_FLG,\
+							S_EVT_ACT.DO_NOT_ROUTE_FLG,\
+							S_EVT_ACT.INST_ALL_OCCR_FLG,\
+							S_EVT_ACT.PAPER_SIGN_FLG,\
+							S_EVT_ACT.REQUIRED_FLG,\
+							S_EVT_ACT.SCHED_LOCKED_FLG,\
+							S_EVT_ACT.SIGN_CAPTURE_FLG,\
+							S_EVT_ACT.STATUS_RPT_FLG,\
+							S_EVT_ACT.TEMPLATE_FLG,\
+							S_EVT_ACT.TMSHT_RLTD_FLG,\
+							S_EVT_ACT.COMMENTS_LONG,\
+							S_EVT_ACT.OWNER_LOGIN,\
+							S_EVT_ACT.ROW_STATUS,\
+							S_EVT_ACT.TODO_CD,\
+							S_EVT_ACT.PAR_EVT_ID,\
+							S_EVT_ACT.ACT_CREATED_BY,\
+							S_EVT_ACT.PYMNT_FLG,\
+							S_EVT_ACT.X_NON_WORKING_FLG,\
+							S_EVT_ACT.X_SELLING_TIME_FLG,\
+							S_EVT_ACT.X_BU_ID,\
+							S_EVT_ACT.X_SUBTODO_CD,\
+							S_EVT_ACT.PERFRM_BY_PER_ID
+;-------------------------------------------------------------------------------------------------------------------------------------------
+[Import TIME_REPORT_HEADER S_ACT_EMP]
+ 
+ 	TYPE = IMPORT
+;<REQUEST Import TIME_REPORT_HEADER S_ACT_EMP>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 134000) FROM EIM_ACTIVITY1 (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 134000 AND 134999</REQUEST>
+;<BATCH Import TIME_REPORT_HEADER S_ACT_EMP>
+	BATCH = 134000-134999
+;</BATCH>
+        
+        ;*** Specify source table ***
+        TABLE = EIM_ACTIVITY1
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_EVT_ACT, S_ACT_EMP
+		
+ 	    ONLY BASE COLUMNS = S_EVT_ACT.ACTIVITY_UID,\
+				S_EVT_ACT.OWNER_PER_ID,\
+				S_EVT_ACT.EVT_STAT_CD,\
+				S_ACT_EMP.ACTIVITY_ID,\
+				S_ACT_EMP.EMP_ID,\
+				S_ACT_EMP.ALARM_ACK_FLG,\
+				S_ACT_EMP.ASGN_MANL_FLG,\
+				S_ACT_EMP.ROW_STATUS
+
+;----------------------------------------------------------------------------------------------------------------------------------------
+[Import TIME_REPORT_DETAILS S_ACT_EMP]
+ 
+ 	TYPE = IMPORT
+;<REQUEST Import TIME_REPORT_DETAILS S_ACT_EMP>SELECT (COUNT (DISTINCT IF_ROW_BATCH_NUM) + 34000) FROM EIM_ACTIVITY1 (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 34000 AND 34999</REQUEST>
+;<BATCH Import TIME_REPORT_DETAILS S_ACT_EMP>
+	BATCH = 34000-34999
+;</BATCH>
+        
+        ;*** Specify source table ***
+        TABLE = EIM_ACTIVITY1
+        
+        ;*** Specify destination tables ***
+        ONLY BASE TABLES = S_EVT_ACT, S_ACT_EMP
+
+ 	    ONLY BASE COLUMNS = S_EVT_ACT.ACTIVITY_UID,\
+				S_EVT_ACT.OWNER_PER_ID,\
+				S_ACT_EMP.ACTIVITY_ID,\
+				S_ACT_EMP.EMP_ID,\
+				S_ACT_EMP.ALARM_ACK_FLG,\
+				S_ACT_EMP.ASGN_MANL_FLG,\
+				S_ACT_EMP.ROW_STATUS
+
+
+[DEL_S_ACT_EMP]
+	TYPE = DELETE
+;<REQUEST DEL_S_ACT_EMP>SELECT ISNULL(MAX(IF_ROW_BATCH_NUM),910105034000) FROM EIM_ACTIVITY1 (NOLOCK) WHERE IF_ROW_BATCH_NUM BETWEEN 910105034000 AND 910105034999</REQUEST>
+;<BATCH DEL_S_ACT_EMP>
+    BATCH = 910105034000-910105034999
+;</BATCH>
+    TABLE = EIM_ACTIVITY1
+	
+	DELETE EXACT = TRUE
+	ONLY BASE TABLES = S_ACT_EMP
